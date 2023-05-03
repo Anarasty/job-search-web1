@@ -1,16 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 const MainPage = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 2,
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 3,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
   };
 
   return (
@@ -61,27 +74,16 @@ const MainPage = () => {
       </section>
       <section className="sliders">
         <h2>Отзывы наших пользователей</h2>
-        <div>
-          <Slider>
+        <div className="sliders-items">
+          <Carousel responsive={responsive}>
             <div className="slider-card">
-              <h3>1</h3>
+                <img src="https://img-19.ccm2.net/8trT73OJjQ9RladAYYrlpCwEjRk=/330x330/e787e4204e42415494a35bdebd6e1068/auth-avatar/f12b4b50446675e3dbedf0a081db1957-Gabriel66335"></img>
+                <p>Hello1</p>
             </div>
-            <div className="slider-card">
-              <h3>2</h3>
-            </div>
-            <div className="slider-card">
-              <h3>3</h3>
-            </div>
-            <div className="slider-card">
-              <h3>4</h3>
-            </div>
-            <div className="slider-card">
-              <h3>5</h3>
-            </div>
-            <div className="slider-card">
-              <h3>6</h3>
-            </div>
-          </Slider>
+            <div>Item 2</div>
+            <div>Item 3</div>
+            <div>Item 4</div>
+          </Carousel>
         </div>
       </section>
       <section>

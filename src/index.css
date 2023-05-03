@@ -5,7 +5,10 @@
   width: 50%;
   margin: 0 auto;
 }
-.slider-card {
+.sliders-items {
+  background-color: aqua;
+}
+
+.sliders-items .slider-card {
   border: 1px solid black;
-  /* width: 50%; */
 }
