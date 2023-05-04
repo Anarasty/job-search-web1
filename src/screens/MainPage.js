@@ -32,8 +32,8 @@ const MainPage = () => {
         <Link to="/">
           <img src="logo.png" alt="logo" />
         </Link>
-        <Link to="/login">Зайти</Link>
-        <Link to="/register">Зарегистрироваться</Link>
+        <Link to="/login">Log In</Link>
+        <Link to="/register">Register</Link>
       </nav>
       <header>
         <Link to="/">
