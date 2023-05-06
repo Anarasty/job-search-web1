@@ -176,7 +176,7 @@ ul li {
 }
 
 
-/* WEBSITE FEATURES SECTION */
+/*? WEBSITE FEATURES SECTION */
 .website-features {
   width: 100%;
   /* background-color: #fffb00; */
@@ -221,7 +221,7 @@ ul li {
   line-height: 30px;
 }
 
-/* SLIDERS */
+/*! SLIDERS */
 .sliders-section {
   background-color: #fff;
   width: 100%;
@@ -277,7 +277,7 @@ ul li {
   margin: 20px 0;
 }
 
-/* SUBSCRIBE SECTION */
+/** SUBSCRIBE SECTION */
 .subscribe-section {
   width: 100%;
   background-color: #0cb349;
@@ -335,7 +335,7 @@ ul li {
   color: #0cb349;
 }
 
-/* FOOTER */
+/*? FOOTER */
 footer {
   width: 100%;
   background-color: #d3d3d3;
@@ -371,4 +371,85 @@ footer .footer-container div p {
 
 footer .footer-container div a{
   color: black;
+}
+
+/*! Vacancies PAGE */
+.vacancies-section-page {
+  width: 100%;
+  background-color: #fff;
+}
+
+.vacancies-section-page nav {
+  background-color: #0cb349;
+  width: 100%;
+  padding: 2rem 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vacancies-section-page nav .main-links {
+  /* background-color: #fff; */
+}
+.vacancies-section-page nav .main-links a {
+  margin-right: 20px;
+  color: #fff;
+  font-size: 1.4rem;
+  border-bottom: 2px solid white;
+  transition: .2s ease;
+}
+
+.vacancies-section-page nav .main-links a:hover {
+  text-shadow: 0px 0px 15px rgb(255, 255, 255);
+}
+
+
+.vacancies-section-page nav .main-links .logo {
+  font-family: "Expletus Sans", cursive;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  border: transparent;
+}
+
+.vacancies-section-page nav .main-links .logo:hover {
+  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0);
+}
+
+.vacancies-section-page .dropdown-menu button {
+  font-size: 1.3rem;
+  padding: 5px 10px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 5px;
+  transition: .2s ease;
+}
+
+.vacancies-section-page .dropdown-menu button:hover {
+  background-color: #fff;
+  color: #0cb349;
+}
+
+.vacancies-section-page .dropdown-menu ul {
+  background-color: #f8f8f8;
+  position: absolute;
+  z-index: 2;
+  margin-top: 2px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  margin-left: -12px;
+}
+.vacancies-section-page .dropdown-menu ul li {
+  padding: 10px;
+  text-align: center;
+}
+.vacancies-section-page .dropdown-menu ul li a{
+  font-size: 1.2rem;
+  /* margin: 20px 0; */
+  color: #000;
+  /* padding: 10px; */
+}
+.vacancies-section-page .dropdown-menu ul li a:hover {
+  text-shadow: 0px 0px 5px black;
 }
