@@ -133,80 +133,108 @@ const MainPage = () => {
           <div className="sliders-items">
             <Carousel responsive={responsive}>
               <div className="slider-card">
-                <img draggable="false" src="https://imgtr.ee/images/2023/05/05/axkUX.jpg"></img>
+                <img
+                  draggable="false"
+                  src="https://imgtr.ee/images/2023/05/06/aAORX.jpg"
+                ></img>
                 <h3>Dmitry Chumak</h3>
-                <p></p>
+                <p>
+                  Great resource for finding jobs in IT, found a job with
+                  interesting tasks and a professional team.
+                </p>
               </div>
-              <div>
-                <img draggable="false" src="https://imgtr.ee/images/2023/05/05/axnTV.jpg"></img>
+              <div className="slider-card">
+                <img
+                  draggable="false"
+                  src="https://imgtr.ee/images/2023/05/06/aAo4l.jpg"
+                ></img>
                 <h3>Lina Stepanenko</h3>
-                <p></p>
+                <p>
+                  Excellent selection of jobs on the site, easy search and
+                  filters, found a job in my city.
+                </p>
               </div>
-              <div>
-                <img draggable="false" src="https://imgtr.ee/images/2023/05/05/axysl.jpg"></img>
-                <p>Hello1</p>
+              <div className="slider-card">
+                <img
+                  draggable="false"
+                  src="https://imgtr.ee/images/2023/05/06/aAqX3.jpg"
+                ></img>
+                <h3>Oleg Torchin</h3>
+                <p>
+                  The site has a lot of interesting jobs in various areas of IT,
+                  I found a job in a field I like.
+                </p>
               </div>
-              <div>
-                <img draggable="false" src="https://imgtr.ee/images/2023/05/05/ax8M3.jpg"></img>
-                <p>Hello1</p>
+              <div className="slider-card">
+                <img
+                  draggable="false"
+                  src="https://imgtr.ee/images/2023/05/06/aAUvL.jpg"
+                ></img>
+                <h3>David Yarmolenko</h3>
+                <p>
+                  Great site for finding jobs in IT, immediately found
+                  interesting jobs and sent a resume.
+                </p>
               </div>
             </Carousel>
           </div>
         </div>
       </section>
-      <section>
-        <h2>Платная подписка</h2>
+      <section className="subscribe-section">
+        <h2>
+          Purchase <span>Galera</span> +
+        </h2>
         <div>
-          <p>
-            Мы предлагаем платную подписку, которая дает пользователям ряд
-            преимуществ:
-          </p>
+          <h3>By paying 4.99$ monthly u get:</h3>
           <ul>
+            <li>Access to more jobs that are not available to general users</li>
             <li>
-              Доступ к большему количеству вакансий, которые не доступны для
-              обычных пользователей
+              Ability to see employers' contact information and contact them
+              directly
             </li>
             <li>
-              Возможность видеть контактные данные работодателей и связываться с
-              ними напрямую
+              Personalized job recommendations that take into account the
+              preferences and user experience
             </li>
+            <li>Early access to new jobs that have just appeared </li>
             <li>
-              Персональные рекомендации вакансий, учитывающие предпочтения и
-              опыт пользователя
-            </li>
-            <li>
-              Ранний доступ к новым вакансиям, которые только что появились на
-              сайте
-            </li>
-            <li>
-              Помощь специалистов по подбору вакансий, которые могут помочь
-              пользователям найти идеальную работу
+              The help of job recruiters who can help users find the perfect job
             </li>
           </ul>
-          <p>
-            Оформление подписки легко и быстро, просто нажмите на кнопку ниже.
-          </p>
-          <button>Оформить подписку</button>
+          <Link to={"/"}>Subscribe</Link>
         </div>
       </section>
       <footer>
-        <ul>
-          <li>
-            <a href="#">Главная</a>
-          </li>
-          <li>
-            <a href="#">Вакансии</a>
-          </li>
-          <li>
-            <a href="#">О нас</a>
-          </li>
-          <li>
-            <a href="#">Контакты</a>
-          </li>
-        </ul>
+        <div className="footer-container">
+          <div>
+            <h4>About Us</h4>
+            <p>
+              We are a job search platform focused on connecting talented IT
+              professionals with leading companies in the industry.
+            </p>
+          </div>
+          <div>
+            <h4>Contact Us</h4>
+            <p>Email: info@itjobs.com</p>
+            <p>Phone: 555-1234</p>
+            <p>Address: 123 Main St, Anytown USA</p>
+          </div>
+          <div>
+            <h4>Follow Us</h4>
+            <p>
+              <i class="fab fa-facebook-square"></i> <a href="#">Facebook</a>
+            </p>
+            <p>
+              <i class="fab fa-twitter-square"></i> <a href="#">Twitter</a>
+            </p>
+            <p>
+              <i class="fab fa-linkedin"></i> <a href="#">LinkedIn</a>
+            </p>
+          </div>
+        </div>
 
         <div>
-          <p>&copy; 2023 Имя компании. Все права защищены.</p>
+          <p>&copy; 2023 Galera. All rights reserved.</p>
         </div>
       </footer>
     </div>

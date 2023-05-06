@@ -244,14 +244,131 @@ ul li {
 }
 
 .sliders-items {
-  background-color: aqua;
+  /* background-color: aqua; */
   margin-bottom: 40px;
-  border: 1px solid black;
-  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  border-radius: 10px;
 }
 
 .sliders-items .slider-card {
   /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliders-items .slider-card img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 20px 0;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.548);
+}
+.sliders-items .slider-card h3 {
+  color: black;
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.sliders-items .slider-card p {
+  color: black;
+  font-size: 1.1rem;
+  margin: 20px 0;
+}
+
+/* SUBSCRIBE SECTION */
+.subscribe-section {
+  width: 100%;
+  background-color: #0cb349;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscribe-section h2 {
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  margin: 20px 0;
+}
+
+.subscribe-section span {
+  font-family: "Expletus Sans", cursive;
+}
+
+.subscribe-section div {
+  border: 2px solid rgb(255, 255, 255);
+  margin: 20px 0;
+  width: 25%;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.subscribe-section div h3 {
+  line-height: 40px;
+  font-size: 1.4rem;
+  color: #fff;
+}
+.subscribe-section div ul li {
+  list-style:  square;
+  font-size: 1.1rem;
+  color: #fff;
+  line-height: 35px;
+}
+
+.subscribe-section div a {
+  color: white;
+  font-size: 1.3rem;
+  border: 1px solid #fff;
+  /* margin-top: 10px auto; */
+  margin: 10px auto 0;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: .3s ease;
+  font-weight: 600;
+}
+.subscribe-section div a:hover {
+  background-color: #fff;
+  color: #0cb349;
+}
+
+/* FOOTER */
+footer {
+  width: 100%;
+  background-color: #d3d3d3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 4rem;
+}
+
+footer .footer-container {
+  display: flex;
+  /* flex-direction: column; */
+  /* width: 500px; */
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+footer .footer-container div {
+  width: 30%;
+}
+footer .footer-container div h4 {
+  font-size: 1.3rem;
+  color: black;
+  line-height: 40px;
+}
+
+footer .footer-container div p {
+  line-height: 30px;
+  font-size: 1rem;
+}
+
+footer .footer-container div a{
+  color: black;
 }
