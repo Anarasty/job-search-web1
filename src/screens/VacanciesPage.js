@@ -12,7 +12,7 @@ const VacanciesPage = () => {
   const toggleShowMore = (vacancyId) => {
     setShowMoreId((prev) => (prev === vacancyId ? "" : vacancyId));
   };
-//PAGINATION
+  //PAGINATION
   // const itemsPerPage = 5;
   // const [currentPage, setCurrentPage] = useState(1);
   // const maxPage = Math.ceil(vacancies.length / itemsPerPage);
@@ -29,7 +29,7 @@ const VacanciesPage = () => {
   //search
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
-  const maxPage = Math.ceil(vacancies.length / itemsPerPage);
+  // const maxPage = Math.ceil(vacancies.length / itemsPerPage);
   const [selectedName, setSelectedName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
@@ -38,19 +38,30 @@ const VacanciesPage = () => {
     setCurrentPage(pageNumber);
   };
 
+  // const filteredVacancies = vacancies.filter(
+  //   (vacancy) =>
+  //     vacancy.vacancy_name.toLowerCase().includes(selectedName.toLowerCase()) &&
+  //     (selectedCategory === "" || vacancy.vacancy_category === selectedCategory) &&
+  //     (selectedCountry === "" || vacancy.vacancy_country === selectedCountry)
+  // );
   const filteredVacancies = vacancies.filter(
     (vacancy) =>
       vacancy.vacancy_name.toLowerCase().includes(selectedName.toLowerCase()) &&
-      (selectedCategory === "" || vacancy.vacancy_category === selectedCategory) &&
-      (selectedCountry === "" || vacancy.vacancy_country === selectedCountry)
+      (selectedCategory === "" ||
+        vacancy.vacancy_category === selectedCategory) &&
+      (selectedCountry === "" ||
+        (selectedCountry === "Others" &&
+          !["Ukraine", "Poland"].includes(vacancy.vacancy_country)) ||
+        (selectedCountry !== "Others" &&
+          vacancy.vacancy_country === selectedCountry))
   );
-  
+
+  const totalPages = Math.ceil(filteredVacancies.length / itemsPerPage);
+
   const paginatedVacancies = filteredVacancies.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
-
 
   return (
     <div className="vacancies-section-page">
@@ -82,54 +93,56 @@ const VacanciesPage = () => {
         <div className="horizontal-line-med"></div>
         <div className="main-vacancies-container">
           <div className="vacancies-container">
-            {paginatedVacancies.map((vacancy) => (
-              <div key={vacancy.vacancy_id} className="vacancy-card">
-                <div className="main-vac-info">
-                  <h3>{vacancy.vacancy_name}</h3>
-                  <h2>
-                    {vacancy.salary_from}$ - {vacancy.salary_to}$
-                  </h2>
-                  <p>{vacancy.creation_data}</p>
-                </div>
-                <p>
-                  {showMoreId === vacancy.vacancy_id
-                    ? vacancy.vacancy_description
-                    : vacancy.vacancy_description.slice(0, 254) + "..."}
-                </p>
-                {vacancy.vacancy_description.length > 254 && (
-                  <a
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      toggleShowMore(vacancy.vacancy_id);
-                    }}
-                  >
+            {paginatedVacancies.length > 0 ? (
+              paginatedVacancies.map((vacancy) => (
+                <div key={vacancy.vacancy_id} className="vacancy-card">
+                  <div className="main-vac-info">
+                    <h3>{vacancy.vacancy_name}</h3>
+                    <h2>
+                      {vacancy.salary_from}$ - {vacancy.salary_to}$
+                    </h2>
+                    <p>{vacancy.creation_data}</p>
+                  </div>
+                  <p>
                     {showMoreId === vacancy.vacancy_id
-                      ? "Show less"
-                      : "Show more"}
-                  </a>
-                )}
-                <div className="vac-secondary-info">
-                  <h4>
-                    <i class="fa-solid fa-location-dot"></i>{" "}
-                    {vacancy.vacancy_country}, {vacancy.vacancy_city}
-                  </h4>
-                  <span>&#9830;</span>
-                  <h4>{vacancy.form_of_employment}</h4>
-                  <span>&#9830;</span>
-                  <h4>
-                    {vacancy.expected_work_experience} year(s) of experience
-                  </h4>
-                  <span>&#9830;</span>
-                  <h4>English lvl: {vacancy.expected_english_level}</h4>
+                      ? vacancy.vacancy_description
+                      : vacancy.vacancy_description.slice(0, 254) + "..."}
+                  </p>
+                  {vacancy.vacancy_description.length > 254 && (
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleShowMore(vacancy.vacancy_id);
+                      }}
+                    >
+                      {showMoreId === vacancy.vacancy_id
+                        ? "Show less"
+                        : "Show more"}
+                    </a>
+                  )}
+                  <div className="vac-secondary-info">
+                    <h4>
+                      <i className="fa-solid fa-location-dot"></i>{" "}
+                      {vacancy.vacancy_country}, {vacancy.vacancy_city}
+                    </h4>
+                    <span>&#9830;</span>
+                    <h4>{vacancy.form_of_employment}</h4>
+                    <span>&#9830;</span>
+                    <h4>
+                      {vacancy.expected_work_experience} year(s) of experience
+                    </h4>
+                    <span>&#9830;</span>
+                    <h4>English lvl: {vacancy.expected_english_level}</h4>
+                  </div>
+                  <div className="horizontal-line-med"></div>
                 </div>
-                <div className="horizontal-line-med"></div>
-              </div>
-            ))}
-            {/* <div className="horizontal-line-big"></div> */}
-            {/* <div className="filters-container">11</div> */}
+              ))
+            ) : (
+              <div className="not-found-vac">No results found!</div>
+            )}
             <div className="pagination">
-              {Array.from({ length: maxPage }, (_, i) => i + 1).map(
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
                 (pageNumber) => (
                   <button
                     key={pageNumber}
@@ -143,46 +156,43 @@ const VacanciesPage = () => {
             </div>
           </div>
 
-          
           <div className="filters-container">
-              <div>
-                <label htmlFor="search-vac-input">
-                  Find by name:
-                  <input
-                    id="search-vac-input"
-                    value={selectedName}
-                    onChange={(e) => setSelectedName(e.target.value)}
-                  />
-                </label>
-              </div>
+            <div className="filter-box">
+              <label htmlFor="search-vac-input">Find by name:</label>
+              <input
+                id="search-vac-input"
+                value={selectedName}
+                onChange={(e) => setSelectedName(e.target.value)}
+              />
+            </div>
 
-              <div>
-                <label>Programming language</label>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                >
-                  <option value="">All</option>
-                  <option value={"JavaScript"}>JavaScript</option>
-                  <option value={"Java"}>Java</option>
-                  <option value={"Python"}>Python</option>
-                </select>
-              </div>
+            <div className="filter-box">
+              <label>Programming language</label>
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                <option value="">All</option>
+                <option value={"JavaScript"}>JavaScript</option>
+                <option value={"Java"}>Java</option>
+                <option value={"Python"}>Python</option>
+              </select>
+            </div>
 
-              <div>
-                <label>Country</label>
-                <select
-                  value={selectedCountry}
-                  onChange={(e) => setSelectedCountry(e.target.value)}
-                >
-                  <option value="">All</option>
-                  <option value={"Ukraine"}>Ukraine</option>
-                  <option value={"Poland"}>Poland</option>
-                  <option value={"Others"}>Others</option>
-                </select>
-              </div>
+            <div className="filter-box">
+              <label>Country</label>
+              <select
+                value={selectedCountry}
+                onChange={(e) => setSelectedCountry(e.target.value)}
+              >
+                <option value="">All</option>
+                <option value={"Ukraine"}>Ukraine</option>
+                <option value={"Poland"}>Poland</option>
+                <option value={"Others"}>Others</option>
+              </select>
             </div>
           </div>
+        </div>
       </section>
     </div>
   );
