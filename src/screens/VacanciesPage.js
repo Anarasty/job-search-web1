@@ -4,10 +4,27 @@ import vacancies from "../data.js";
 
 const VacanciesPage = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showMoreId, setShowMoreId] = useState("");
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  const toggleShowMore = (vacancyId) => {
+    setShowMoreId((prev) => (prev === vacancyId ? "" : vacancyId));
+  };
+
+  const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const maxPage = Math.ceil(vacancies.length / itemsPerPage);
+
+  const handleClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const paginatedVacancies = vacancies.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
     <div className="vacancies-section-page">
@@ -36,30 +53,71 @@ const VacanciesPage = () => {
 
       <section className="main-vacancies">
         <h1 className="title">Vacancies on Galera</h1>
-        <div className="vacancies-container">
-          {vacancies.map((vacancy) => (
-            <div key={vacancy.vacancy_id} className="vacancy-card">
-              <div>
-                <h3>Vacancy title: {vacancy.vacancy_name}</h3>
-                <p>Publication date: {vacancy.creation_data}</p>
+        <div className="horizontal-line-med"></div>
+        <div className="main-vacancies-container">
+          <div className="vacancies-container">
+            {paginatedVacancies.map((vacancy) => (
+              <div key={vacancy.vacancy_id} className="vacancy-card">
+                <div className="main-vac-info">
+                  <h3>{vacancy.vacancy_name}</h3>
+                  <h2>
+                    {vacancy.salary_from}$ - {vacancy.salary_to}$
+                  </h2>
+                  <p>{vacancy.creation_data}</p>
+                </div>
+                <p>
+                  {showMoreId === vacancy.vacancy_id
+                    ? vacancy.vacancy_description
+                    : vacancy.vacancy_description.slice(0, 254) + "..."}
+                </p>
+                {vacancy.vacancy_description.length > 254 && (
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      toggleShowMore(vacancy.vacancy_id);
+                    }}
+                  >
+                    {showMoreId === vacancy.vacancy_id
+                      ? "Show less"
+                      : "Show more"}
+                  </a>
+                )}
+                <div className="vac-secondary-info">
+                  <h4>
+                    {vacancy.vacancy_country}, {vacancy.vacancy_city}
+                  </h4>
+                  <span>&#9830;</span>
+                  <h4>{vacancy.form_of_employment}</h4>
+                  <span>&#9830;</span>
+                  <h4>
+                    {vacancy.expected_work_experience} year(s) of experience
+                  </h4>
+                  <span>&#9830;</span>
+                  <h4>English lvl: {vacancy.expected_english_level}</h4>
+                </div>
+                <div className="horizontal-line-med"></div>
               </div>
-              <p>Vacancy description: {vacancy.vacancy_description}</p>
-              <a href="">Show more</a>
-              <h4>
-                Vacancy {vacancy.vacancy_country}, {vacancy.vacancy_city}
-              </h4>
-              <h4>Form of employment: {vacancy.form_of_employment}</h4>
-              <h4>
-                Expected work experience: {vacancy.expected_work_experience}{" "}
-                years
-              </h4>
-              <h4>Expected english level: {vacancy.expected_english_level}</h4>
+            ))}
+            {/* <div className="horizontal-line-big"></div> */}
+            {/* <div className="filters-container">11</div> */}
+            <div className="pagination">
+              {Array.from({ length: maxPage }, (_, i) => i + 1).map(
+                (pageNumber) => (
+                  <button
+                    key={pageNumber}
+                    onClick={() => handleClick(pageNumber)}
+                    className={currentPage === pageNumber ? "active" : ""}
+                  >
+                    {pageNumber}
+                  </button>
+                )
+              )}
             </div>
-          ))}
-          <div className="horizontal-line-big"></div>
-        </div>
+          </div>
 
-        {/* <div className="filters-container"></div> */}
+          <div className="filters-container">11</div>
+        </div>
       </section>
     </div>
   );

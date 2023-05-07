@@ -8,7 +8,8 @@
   /* font-family: 'Expletus Sans', cursive; */
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 a {
@@ -105,7 +106,7 @@ ul li {
   font-size: 1.3rem;
   margin: 20px 0;
 }
-.main-page-section header div{
+.main-page-section header div {
   background-color: #0cb349;
   width: 100%;
   height: 100px;
@@ -122,7 +123,7 @@ ul li {
   padding: 10px 15px;
   background-color: #fffb00;
   font-weight: 400;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 .main-page-section header div a:hover {
   background-color: transparent;
@@ -157,10 +158,9 @@ ul li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 }
 
-.small-about-section ul li img{
+.small-about-section ul li img {
   width: 200px; /* Set a fixed width */
   /* height: 40%; */
   margin: 40px;
@@ -175,6 +175,12 @@ ul li {
   margin: 60px 0;
 }
 
+.horizontal-line-med {
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  height: 1px;
+  margin: 30px 0;
+}
 
 /*? WEBSITE FEATURES SECTION */
 .website-features {
@@ -198,7 +204,7 @@ ul li {
   /* margin: 0 50px; */
   /* background-color: #0cb349; */
   /* width: 30%; */
-  margin:50px;
+  margin: 50px;
   padding: 0 100px;
 }
 .website-features .features-container div {
@@ -313,7 +319,7 @@ ul li {
   color: #fff;
 }
 .subscribe-section div ul li {
-  list-style:  square;
+  list-style: square;
   font-size: 1.1rem;
   color: #fff;
   line-height: 35px;
@@ -327,7 +333,7 @@ ul li {
   margin: 10px auto 0;
   padding: 8px 16px;
   border-radius: 10px;
-  transition: .3s ease;
+  transition: 0.3s ease;
   font-weight: 600;
 }
 .subscribe-section div a:hover {
@@ -369,7 +375,7 @@ footer .footer-container div p {
   font-size: 1rem;
 }
 
-footer .footer-container div a{
+footer .footer-container div a {
   color: black;
 }
 
@@ -396,13 +402,12 @@ footer .footer-container div a{
   color: #fff;
   font-size: 1.4rem;
   border-bottom: 2px solid white;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 .vacancies-section-page nav .main-links a:hover {
   text-shadow: 0px 0px 15px rgb(255, 255, 255);
 }
-
 
 .vacancies-section-page nav .main-links .logo {
   font-family: "Expletus Sans", cursive;
@@ -423,7 +428,7 @@ footer .footer-container div a{
   border: 1px solid white;
   color: white;
   border-radius: 5px;
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
 
 .vacancies-section-page .dropdown-menu button:hover {
@@ -444,7 +449,7 @@ footer .footer-container div a{
   padding: 10px;
   text-align: center;
 }
-.vacancies-section-page .dropdown-menu ul li a{
+.vacancies-section-page .dropdown-menu ul li a {
   font-size: 1.2rem;
   /* margin: 20px 0; */
   color: #000;
@@ -452,4 +457,124 @@ footer .footer-container div a{
 }
 .vacancies-section-page .dropdown-menu ul li a:hover {
   text-shadow: 0px 0px 5px black;
+}
+/* MAINA VAC SECTION */
+.main-vacancies {
+  /* background-color: #d3d3d3; */
+  width: 100%;
+  min-height: 80vh;
+  padding: 4rem 8rem;
+}
+
+.main-vacancies .title {
+  font-size: 2rem;
+  /* margin: 0 0 30px; */
+  color: black;
+}
+
+.main-vacancies .main-vacancies-container {
+  display: flex;
+  /* background-color: #0cb349; */
+  /* align-items: center; */
+  justify-content: space-between;
+}
+
+.main-vacancies-container .vacancies-container {
+  /* background-color: #fffb00; */
+  /* padding: 0 4rem; */
+  width: 70%;
+}
+
+.main-vacancies-container .vacancies-container .vacancy-card {
+  /* background-color: #0cb349; */
+  border-radius: 20px;
+  padding: 1rem 2rem;
+  margin: 30px 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: 0.2s ease;
+}
+
+.main-vacancies-container .vacancies-container .vacancy-card:hover {
+  box-shadow: 0 0 20px rgb(0, 0, 0);
+}
+
+.main-vacancies-container .vacancies-container .vacancy-card .main-vac-info {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #000000; */
+}
+
+.main-vacancies-container .vacancies-container .vacancy-card .main-vac-info h3 {
+  color: #119ae9;
+  font-size: 1.5rem;
+  font-size: 500;
+  margin: 20px 0;
+}
+.main-vacancies-container
+  .vacancies-container
+  .vacancy-card
+  .main-vac-info
+  h3:hover {
+  color: #0c76b3;
+  cursor: pointer;
+}
+
+.main-vacancies-container .vacancies-container .vacancy-card .main-vac-info h2 {
+  color: #0cb349;
+  margin: 10px 0;
+}
+.main-vacancies-container .vacancies-container .vacancy-card .main-vac-info p {
+  align-self: self-end;
+  margin: 10px 0;
+  opacity: 0.6;
+  color: black;
+}
+
+.main-vacancies-container .vacancies-container .vacancy-card p {
+  font-size: 1.2rem;
+  color: black;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+
+.main-vacancies-container .vacancies-container .vacancy-card a {
+  /* border: 1px solid black; */
+  /* padding: 10px 0; */
+  color: #119ae9;
+  font-weight: 500;
+  font-size: 1.3rem;
+  transition: 0.3s ease;
+  /* margin-bottom: 20px; */
+}
+.main-vacancies-container .vacancies-container .vacancy-card a:hover {
+  color: #0c76b3;
+}
+.main-vacancies-container
+  .vacancies-container
+  .vacancy-card
+  .vac-secondary-info {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.main-vacancies-container
+  .vacancies-container
+  .vacancy-card
+  .vac-secondary-info
+  h4,
+.main-vacancies-container
+  .vacancies-container
+  .vacancy-card
+  .vac-secondary-info
+  span {
+  color: black;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.main-vacancies-container .filters-container {
+  background-color: aqua;
+  width: 30%;
 }
