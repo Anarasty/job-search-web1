@@ -12,19 +12,45 @@ const VacanciesPage = () => {
   const toggleShowMore = (vacancyId) => {
     setShowMoreId((prev) => (prev === vacancyId ? "" : vacancyId));
   };
+//PAGINATION
+  // const itemsPerPage = 5;
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const maxPage = Math.ceil(vacancies.length / itemsPerPage);
 
-  const itemsPerPage = 10;
+  // const handleClick = (pageNumber) => {
+  //   setCurrentPage(pageNumber);
+  // };
+
+  // const paginatedVacancies = vacancies.slice(
+  //   (currentPage - 1) * itemsPerPage,
+  //   currentPage * itemsPerPage
+  // );
+
+  //search
+  const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(vacancies.length / itemsPerPage);
+  const [selectedName, setSelectedName] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
 
   const handleClick = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const paginatedVacancies = vacancies.slice(
+  const filteredVacancies = vacancies.filter(
+    (vacancy) =>
+      vacancy.vacancy_name.toLowerCase().includes(selectedName.toLowerCase()) &&
+      (selectedCategory === "" || vacancy.vacancy_category === selectedCategory) &&
+      (selectedCountry === "" || vacancy.vacancy_country === selectedCountry)
+  );
+  
+  const paginatedVacancies = filteredVacancies.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+
 
   return (
     <div className="vacancies-section-page">
@@ -85,6 +111,7 @@ const VacanciesPage = () => {
                 )}
                 <div className="vac-secondary-info">
                   <h4>
+                    <i class="fa-solid fa-location-dot"></i>{" "}
                     {vacancy.vacancy_country}, {vacancy.vacancy_city}
                   </h4>
                   <span>&#9830;</span>
@@ -116,8 +143,46 @@ const VacanciesPage = () => {
             </div>
           </div>
 
-          <div className="filters-container">11</div>
-        </div>
+          
+          <div className="filters-container">
+              <div>
+                <label htmlFor="search-vac-input">
+                  Find by name:
+                  <input
+                    id="search-vac-input"
+                    value={selectedName}
+                    onChange={(e) => setSelectedName(e.target.value)}
+                  />
+                </label>
+              </div>
+
+              <div>
+                <label>Programming language</label>
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                >
+                  <option value="">All</option>
+                  <option value={"JavaScript"}>JavaScript</option>
+                  <option value={"Java"}>Java</option>
+                  <option value={"Python"}>Python</option>
+                </select>
+              </div>
+
+              <div>
+                <label>Country</label>
+                <select
+                  value={selectedCountry}
+                  onChange={(e) => setSelectedCountry(e.target.value)}
+                >
+                  <option value="">All</option>
+                  <option value={"Ukraine"}>Ukraine</option>
+                  <option value={"Poland"}>Poland</option>
+                  <option value={"Others"}>Others</option>
+                </select>
+              </div>
+            </div>
+          </div>
       </section>
     </div>
   );

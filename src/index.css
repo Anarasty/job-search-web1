@@ -556,7 +556,7 @@ footer .footer-container div a {
   margin: 20px 0;
   display: flex;
   justify-content: space-between;
-  width: 50%;
+  width: 60%;
 }
 
 .main-vacancies-container
@@ -574,7 +574,29 @@ footer .footer-container div a {
   opacity: 0.7;
 }
 
+.main-vacancies-container .vacancies-container .pagination button{
+  /* background-color: #000; */
+  margin-left: 10px;
+  font-size: 1.3rem;
+  padding: 5px 1px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.main-vacancies-container .vacancies-container .pagination .active {
+  background-color: #119ae9;
+  color: #fff;
+  border-color: white;
+}
+
 .main-vacancies-container .filters-container {
-  background-color: aqua;
-  width: 30%;
+  /* background-color: aqua; */
+  width: 25%;
+  border-radius: 20px;
+  padding: 4rem 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  height: 100%;
 }
