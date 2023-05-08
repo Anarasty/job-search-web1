@@ -1,10 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Expletus+Sans&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  /* font-family: "Inter", sans-serif; */
+  font-family: 'Open Sans', sans-serif;
+
   /* font-family: 'Expletus Sans', cursive; */
 }
 
@@ -80,7 +84,7 @@ ul li {
 
 .main-page-section header .type span {
   word-break: break-all;
-  height: 1.2em;
+  height: 1.5em;
   width: 0%;
   overflow: hidden;
   animation: typingAnim 4s linear infinite alternate;
@@ -613,7 +617,8 @@ footer .footer-container div a {
   margin: 0 0 10px;
 }
 
-.main-vacancies-container .filters-container .filter-box input, .filter-box select{
+.main-vacancies-container .filters-container .filter-box input,
+.filter-box select {
   font-size: 1.2rem;
   padding: 5px;
   width: 80%;
@@ -626,4 +631,142 @@ footer .footer-container div a {
   /* background-color: #0c76b3; */
   margin: 20px 0;
   font-size: 2rem;
+}
+
+/* SOLO VAC SECTION */
+.solo-vacancy-section nav {
+  background-color: #0cb349;
+  width: 100%;
+  padding: 2rem 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.solo-vacancy-section nav .main-links a {
+  margin-right: 20px;
+  color: #fff;
+  font-size: 1.4rem;
+  border-bottom: 2px solid white;
+  transition: 0.2s ease;
+}
+
+.solo-vacancy-section nav .main-links a:hover {
+  text-shadow: 0px 0px 15px rgb(255, 255, 255);
+}
+
+.solo-vacancy-section nav .main-links .logo {
+  font-family: "Expletus Sans", cursive;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  border: transparent;
+}
+
+.solo-vacancy-section nav .main-links .logo:hover {
+  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0);
+}
+
+.solo-vacancy-section .dropdown-menu button {
+  font-size: 1.3rem;
+  padding: 5px 10px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 5px;
+  transition: 0.2s ease;
+}
+
+.solo-vacancy-section .dropdown-menu button:hover {
+  background-color: #fff;
+  color: #0cb349;
+}
+
+.solo-vacancy-section .dropdown-menu ul {
+  background-color: #f8f8f8;
+  position: absolute;
+  z-index: 2;
+  margin-top: 2px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  margin-left: -12px;
+}
+.solo-vacancy-section .dropdown-menu ul li {
+  padding: 10px;
+  text-align: center;
+}
+.solo-vacancy-section .dropdown-menu ul li a {
+  font-size: 1.2rem;
+  /* margin: 20px 0; */
+  color: #000;
+  /* padding: 10px; */
+}
+.solo-vacancy-section .dropdown-menu ul li a:hover {
+  text-shadow: 0px 0px 5px black;
+}
+/* MAIN Vacancy SECTION */
+.solo-vacancy-section .vacancy-container {
+  min-height: 70vh;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  /* background-color: #000000; */
+  /* margin: 0 auto; */
+}
+.solo-vacancy-section .vacancy-container  .vac-main-info {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #0c76b3; */
+}
+
+.solo-vacancy-section .vacancy-container  .vac-main-info h1 {
+  margin: 20px 0 ;
+  font-size: 2rem;
+  color: black;
+}
+.solo-vacancy-section .vacancy-container  .vac-main-info h2 {
+  font-size: 1.5rem;
+  color: #0cb349;
+}
+
+.solo-vacancy-section .vacancy-container  .vac-main-info .creation-data {
+  /* align-self: self-end; */
+  margin: 20px 0;
+  opacity: 0.5;
+}
+.solo-vacancy-section .vacancy-container  .vac-main-info .description-p {
+  width: 70%;
+  margin: 20px 0 ;
+  line-height: 35px;
+  font-size: 1.2rem;
+  color: black;
+}
+/* .solo-vacancy-section .vacancy-container .vac-secondary-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.3rem;
+} */
+
+.solo-vacancy-section .vac-container {
+  display: flex;
+  /* background-color: #fffb00; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.solo-vacancy-section .vac-container  .vac-secondary-info {
+  /* background-color: azure; */
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  margin: 0 60px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  line-height: 40px;
+  /* font-weight: 400; */
 }

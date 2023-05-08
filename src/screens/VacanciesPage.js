@@ -12,24 +12,10 @@ const VacanciesPage = () => {
   const toggleShowMore = (vacancyId) => {
     setShowMoreId((prev) => (prev === vacancyId ? "" : vacancyId));
   };
-  //PAGINATION
-  // const itemsPerPage = 5;
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const maxPage = Math.ceil(vacancies.length / itemsPerPage);
-
-  // const handleClick = (pageNumber) => {
-  //   setCurrentPage(pageNumber);
-  // };
-
-  // const paginatedVacancies = vacancies.slice(
-  //   (currentPage - 1) * itemsPerPage,
-  //   currentPage * itemsPerPage
-  // );
 
   //search
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
-  // const maxPage = Math.ceil(vacancies.length / itemsPerPage);
   const [selectedName, setSelectedName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
@@ -38,12 +24,6 @@ const VacanciesPage = () => {
     setCurrentPage(pageNumber);
   };
 
-  // const filteredVacancies = vacancies.filter(
-  //   (vacancy) =>
-  //     vacancy.vacancy_name.toLowerCase().includes(selectedName.toLowerCase()) &&
-  //     (selectedCategory === "" || vacancy.vacancy_category === selectedCategory) &&
-  //     (selectedCountry === "" || vacancy.vacancy_country === selectedCountry)
-  // );
   const filteredVacancies = vacancies.filter(
     (vacancy) =>
       vacancy.vacancy_name.toLowerCase().includes(selectedName.toLowerCase()) &&
@@ -97,7 +77,7 @@ const VacanciesPage = () => {
               paginatedVacancies.map((vacancy) => (
                 <div key={vacancy.vacancy_id} className="vacancy-card">
                   <div className="main-vac-info">
-                    <h3>{vacancy.vacancy_name}</h3>
+                  <Link to={`/vacancies/${vacancy.vacancy_id}`}>{vacancy.vacancy_name}</Link>
                     <h2>
                       {vacancy.salary_from}$ - {vacancy.salary_to}$
                     </h2>
@@ -194,6 +174,39 @@ const VacanciesPage = () => {
           </div>
         </div>
       </section>
+      <footer>
+        <div className="footer-container">
+          <div>
+            <h4>About Us</h4>
+            <p>
+              We are a job search platform focused on connecting talented IT
+              professionals with leading companies in the industry.
+            </p>
+          </div>
+          <div>
+            <h4>Contact Us</h4>
+            <p>Email: info@itjobs.com</p>
+            <p>Phone: 555-1234</p>
+            <p>Address: 123 Main St, Anytown USA</p>
+          </div>
+          <div>
+            <h4>Follow Us</h4>
+            <p>
+              <i className="fab fa-facebook-square"></i> <a href="#">Facebook</a>
+            </p>
+            <p>
+              <i className="fab fa-twitter-square"></i> <a href="#">Twitter</a>
+            </p>
+            <p>
+              <i className="fab fa-linkedin"></i> <a href="#">LinkedIn</a>
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <p>&copy; 2023 Galera. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 };

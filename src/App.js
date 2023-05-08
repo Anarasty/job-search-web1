@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./screens/MainPage";
-import './App.css';
+import "./App.css";
 import VacanciesPage from "./screens/VacanciesPage";
+import SoloVacancyPage from "./screens/SoloVacancyPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/vacancies" element={<VacanciesPage />} />
+          <Route path="/vacancies/:vacancy_id" element={<SoloVacancyPage />} />
         </Routes>
       </Router>
     </div>

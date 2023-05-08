@@ -41,7 +41,7 @@ const MainPage = () => {
         <img src="https://imgtr.ee/images/2023/05/05/aZ83R.png" alt="logo" />
         <h1>IT job searching website #1 in Ukraine</h1>
         <h3 className="typing-txt">
-          <span class="type">
+          <span className="type">
             <span> We will find the right job for you!</span>
           </span>
         </h3>
@@ -96,7 +96,7 @@ const MainPage = () => {
         <div className="features-container">
           <div>
             <h3>
-              <i class="fa-solid fa-circle-check"></i> Only verified vacancies
+              <i className="fa-solid fa-circle-check"></i> Only verified vacancies
             </h3>
             <p>
               Each job is vetted to ensure that it is real and suitable for
@@ -106,7 +106,7 @@ const MainPage = () => {
           </div>
           <div>
             <h3>
-              <i class="fa-solid fa-magnifying-glass"></i> Fast and simple
+              <i className="fa-solid fa-magnifying-glass"></i> Fast and simple
               search
             </h3>
             <p>
@@ -117,7 +117,7 @@ const MainPage = () => {
           </div>
           <div>
             <h3>
-              <i class="fa-solid fa-list"></i> Personalized recommendations
+              <i className="fa-solid fa-list"></i> Personalized recommendations
             </h3>
             <p>
               Our algorithm analyzes a user's profile, qualifications, and
@@ -222,13 +222,13 @@ const MainPage = () => {
           <div>
             <h4>Follow Us</h4>
             <p>
-              <i class="fab fa-facebook-square"></i> <a href="#">Facebook</a>
+              <i className="fab fa-facebook-square"></i> <a href="#">Facebook</a>
             </p>
             <p>
-              <i class="fab fa-twitter-square"></i> <a href="#">Twitter</a>
+              <i className="fab fa-twitter-square"></i> <a href="#">Twitter</a>
             </p>
             <p>
-              <i class="fab fa-linkedin"></i> <a href="#">LinkedIn</a>
+              <i className="fab fa-linkedin"></i> <a href="#">LinkedIn</a>
             </p>
           </div>
         </div>
