@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Expletus+Sans&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   /* font-family: "Inter", sans-serif; */
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 
   /* font-family: 'Expletus Sans', cursive; */
 }
@@ -39,6 +39,8 @@ ul li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  z-index: 10;
 }
 .main-page-section nav .logo {
   font-size: 2rem;
@@ -72,6 +74,7 @@ ul li {
 .main-page-section header {
   display: grid;
   place-items: center;
+  padding-top: 100px;
 }
 
 .main-page-section header img {
@@ -627,6 +630,20 @@ footer .footer-container div a {
   margin: 0 0 10px;
 }
 
+.main-vacancies-container .filters-container .reset-filters-btn {
+  font-size: 1.2rem;
+  background-color: rgba(255, 0, 0, 0.3);
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-top: 20px;
+  transition: .3s ease;
+  cursor: pointer;
+}
+.main-vacancies-container .filters-container .reset-filters-btn:hover {
+  background-color: rgba(255, 0, 0, 1);
+}
+
 .not-found-vac {
   /* background-color: #0c76b3; */
   margin: 20px 0;
@@ -713,30 +730,30 @@ footer .footer-container div a {
   /* background-color: #000000; */
   /* margin: 0 auto; */
 }
-.solo-vacancy-section .vacancy-container  .vac-main-info {
+.solo-vacancy-section .vacancy-container .vac-main-info {
   display: flex;
   flex-direction: column;
   /* background-color: #0c76b3; */
 }
 
-.solo-vacancy-section .vacancy-container  .vac-main-info h1 {
-  margin: 20px 0 ;
+.solo-vacancy-section .vacancy-container .vac-main-info h1 {
+  margin: 20px 0;
   font-size: 2rem;
   color: black;
 }
-.solo-vacancy-section .vacancy-container  .vac-main-info h2 {
+.solo-vacancy-section .vacancy-container .vac-main-info h2 {
   font-size: 1.5rem;
   color: #0cb349;
 }
 
-.solo-vacancy-section .vacancy-container  .vac-main-info .creation-data {
+.solo-vacancy-section .vacancy-container .vac-main-info .creation-data {
   /* align-self: self-end; */
   margin: 20px 0;
   opacity: 0.5;
 }
-.solo-vacancy-section .vacancy-container  .vac-main-info .description-p {
+.solo-vacancy-section .vacancy-container .vac-main-info .description-p {
   width: 70%;
-  margin: 20px 0 ;
+  margin: 20px 0;
   line-height: 35px;
   font-size: 1.2rem;
   color: black;
@@ -756,7 +773,7 @@ footer .footer-container div a {
   align-items: center;
 }
 
-.solo-vacancy-section .vac-container  .vac-secondary-info {
+.solo-vacancy-section .vac-container .vac-secondary-info {
   /* background-color: azure; */
   border: 1px solid rgba(0, 0, 0, 0.5);
   width: 30%;
