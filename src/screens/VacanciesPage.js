@@ -23,7 +23,16 @@ const VacanciesPage = () => {
   const [selectedEmployment, setSelectedEmployment] = useState("");
   const [selectedExperience, setSelectedExperience] = useState("");
   const [selectedEnglish, setSelectedEnglish] = useState("");
-
+  const [minSalary, setMinSalary] = useState("");
+  const [maxSalary, setMaxSalary] = useState("");
+  
+  const handleMinSalaryChange = (e) => {
+    setMinSalary(e.target.value);
+  };
+  
+  const handleMaxSalaryChange = (e) => {
+    setMaxSalary(e.target.value);
+  };
   const handleEmploymentChange = (e) => {
     setSelectedEmployment(e.target.value);
   };
@@ -42,9 +51,15 @@ const VacanciesPage = () => {
 
   const filteredVacancies = vacancies.filter(
     (vacancy) =>
-      vacancy.vacancy_name.toLowerCase().includes(selectedName.toLowerCase()) &&
-      (selectedCategory === "" ||
-        vacancy.vacancy_category === selectedCategory) &&
+      // Фильтруем по минимальной зарплате
+      (minSalary === "" || vacancy.salary_from >= Number(minSalary)) &&
+      // Фильтруем по максимальной зарплате
+      (maxSalary === "" || vacancy.salary_to <= Number(maxSalary)) &&
+      // Фильтруем по остальным параметрам, которые уже есть в коде
+      vacancy.vacancy_name
+        .toLowerCase()
+        .includes(selectedName.toLowerCase()) &&
+      (selectedCategory === "" || vacancy.vacancy_category === selectedCategory) &&
       (selectedCountry === "" ||
         (selectedCountry === "Others" &&
           !["Ukraine", "Poland"].includes(vacancy.vacancy_country)) ||
@@ -75,6 +90,8 @@ const VacanciesPage = () => {
     setSelectedEmployment("");
     setSelectedExperience("");
     setSelectedEnglish("");
+    setMinSalary("");
+    setMaxSalary("");
     setCurrentPage(1);
   };
 
@@ -247,15 +264,24 @@ const VacanciesPage = () => {
             </div>
 
             <div className="filter-box">
-              <div>
-                {" "}
-                <label htmlFor="minSalary">Min salary:</label>
-                <input id="minSalary" type="number" />
-                <br />
-                <label htmlFor="maxSalary">Max salary:</label>
-                <input id="maxSalary" type="number" />
-              </div>
-            </div>
+  <div>
+    <label htmlFor="minSalary">Min salary:</label>
+    <input min={1}
+      id="minSalary"
+      type="number"
+      value={minSalary}
+      onChange={handleMinSalaryChange}
+    />
+    <br />
+    <label htmlFor="maxSalary">Max salary:</label>
+    <input max={999999}
+      id="maxSalary"
+      type="number"
+      value={maxSalary}
+      onChange={handleMaxSalaryChange}
+    />
+  </div>
+</div>
 
             <button className="reset-filters-btn" onClick={handleResetFilter}>
               Reset filters
