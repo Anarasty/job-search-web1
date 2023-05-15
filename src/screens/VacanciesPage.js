@@ -25,11 +25,11 @@ const VacanciesPage = () => {
   const [selectedEnglish, setSelectedEnglish] = useState("");
   const [minSalary, setMinSalary] = useState("");
   const [maxSalary, setMaxSalary] = useState("");
-  
+
   const handleMinSalaryChange = (e) => {
     setMinSalary(e.target.value);
   };
-  
+
   const handleMaxSalaryChange = (e) => {
     setMaxSalary(e.target.value);
   };
@@ -56,10 +56,9 @@ const VacanciesPage = () => {
       // Фильтруем по максимальной зарплате
       (maxSalary === "" || vacancy.salary_to <= Number(maxSalary)) &&
       // Фильтруем по остальным параметрам, которые уже есть в коде
-      vacancy.vacancy_name
-        .toLowerCase()
-        .includes(selectedName.toLowerCase()) &&
-      (selectedCategory === "" || vacancy.vacancy_category === selectedCategory) &&
+      vacancy.vacancy_name.toLowerCase().includes(selectedName.toLowerCase()) &&
+      (selectedCategory === "" ||
+        vacancy.vacancy_category === selectedCategory) &&
       (selectedCountry === "" ||
         (selectedCountry === "Others" &&
           !["Ukraine", "Poland"].includes(vacancy.vacancy_country)) ||
@@ -264,24 +263,26 @@ const VacanciesPage = () => {
             </div>
 
             <div className="filter-box">
-  <div>
-    <label htmlFor="minSalary">Min salary:</label>
-    <input min={1}
-      id="minSalary"
-      type="number"
-      value={minSalary}
-      onChange={handleMinSalaryChange}
-    />
-    <br />
-    <label htmlFor="maxSalary">Max salary:</label>
-    <input max={999999}
-      id="maxSalary"
-      type="number"
-      value={maxSalary}
-      onChange={handleMaxSalaryChange}
-    />
-  </div>
-</div>
+              <div>
+                <label htmlFor="minSalary">Min salary:</label>
+                <input
+                  min={1}
+                  id="minSalary"
+                  type="number"
+                  value={minSalary}
+                  onChange={handleMinSalaryChange}
+                />
+                <br />
+                <label htmlFor="maxSalary">Max salary:</label>
+                <input
+                  max={999999}
+                  id="maxSalary"
+                  type="number"
+                  value={maxSalary}
+                  onChange={handleMaxSalaryChange}
+                />
+              </div>
+            </div>
 
             <button className="reset-filters-btn" onClick={handleResetFilter}>
               Reset filters

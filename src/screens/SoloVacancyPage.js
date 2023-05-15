@@ -19,6 +19,38 @@ const SoloVacancyPage = () => {
     setShowMoreId((prev) => (prev === vacancyId ? "" : vacancyId));
   };
 
+  const [showApplyForm, setShowApplyForm] = useState(false);
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [resumeFile, setResumeFile] = useState("");
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleMessageChange = (event) => {
+    setMessage(event.target.value);
+  };
+
+  const handleResumeChange = (event) => {
+    setResumeFile(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(`Email: ${email}`);
+    console.log(`Message: ${message}`);
+    console.log(`ResumeFile: ${resumeFile}`);
+    setEmail("");
+    setMessage("");
+    setResumeFile("");
+    setShowApplyForm(false);
+  };
+
+  const toggleApplyForm = () => {
+    setShowApplyForm(!showApplyForm);
+  };
+
   return (
     <div className="solo-vacancy-section">
       <nav>
@@ -52,6 +84,40 @@ const SoloVacancyPage = () => {
             </h2>
             <p className="creation-data">{vacancy.creation_data}</p>
             <p className="description-p">{vacancy.vacancy_description}</p>
+            <button className="apply-btn" onClick={toggleApplyForm}>
+              Apply
+            </button>
+            {showApplyForm && (
+              <form onSubmit={handleSubmit}>
+                <label htmlFor="email-input">Email: </label>
+                <input
+                  autoComplete="off"
+                  id="email-input"
+                  type="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+                <label htmlFor="message-input">
+                  Write about yourself and why you applied for this position:{" "}
+                </label>
+                <textarea
+                  rows="3"
+                  id="message-input"
+                  value={message}
+                  onChange={handleMessageChange}
+                ></textarea>
+
+                <label htmlFor="resume-input">
+                  Resume file: <input value={resumeFile}
+                  onChange={handleResumeChange} id="resume-input" type="file" />
+                </label>
+                <input
+                  type="submit"
+                  value="Send"
+                  className="send-apply-form"
+                ></input>
+              </form>
+            )}
           </div>
         </div>
         <div className="vac-secondary-info">
@@ -60,7 +126,9 @@ const SoloVacancyPage = () => {
             {vacancy.vacancy_country}, {vacancy.vacancy_city}
           </h4>
           <h4>Form of employment: {vacancy.form_of_employment}</h4>
-          <h4>Required experience: {vacancy.expected_work_experience} year(s)</h4>
+          <h4>
+            Required experience: {vacancy.expected_work_experience} year(s)
+          </h4>
           <h4>Required english level: {vacancy.expected_english_level}</h4>
         </div>
       </div>

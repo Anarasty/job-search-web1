@@ -637,7 +637,7 @@ footer .footer-container div a {
   border-radius: 4px;
   padding: 5px 10px;
   margin-top: 20px;
-  transition: .3s ease;
+  transition: 0.3s ease;
   cursor: pointer;
 }
 .main-vacancies-container .filters-container .reset-filters-btn:hover {
@@ -722,14 +722,16 @@ footer .footer-container div a {
 }
 /* MAIN Vacancy SECTION */
 .solo-vacancy-section .vacancy-container {
-  min-height: 70vh;
+  min-height: 110vh;
   width: 80%;
   display: flex;
   flex-direction: column;
-  padding: 4rem;
+  padding: 4rem 2rem;
+  position: relative;
   /* background-color: #000000; */
   /* margin: 0 auto; */
 }
+
 .solo-vacancy-section .vacancy-container .vac-main-info {
   display: flex;
   flex-direction: column;
@@ -752,31 +754,109 @@ footer .footer-container div a {
   opacity: 0.5;
 }
 .solo-vacancy-section .vacancy-container .vac-main-info .description-p {
-  width: 70%;
+  width: 100%;
   margin: 20px 0;
   line-height: 35px;
   font-size: 1.2rem;
   color: black;
 }
-/* .solo-vacancy-section .vacancy-container .vac-secondary-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 1.3rem;
-} */
 
 .solo-vacancy-section .vac-container {
   display: flex;
   /* background-color: #fffb00; */
   justify-content: space-between;
   align-items: center;
+  /* background-color: #0c76b3; */
+  width: 70%;
+  margin: 0 auto;
 }
 
+.solo-vacancy-section .apply-btn {
+  width: 20%;
+  font-size: 1.2rem;
+  background-color: #0cb349;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 8px 16px;
+  transition: 0.3s ease;
+}
+
+.solo-vacancy-section .apply-btn:hover {
+  background-color: #06e056;
+}
+
+.solo-vacancy-section .vacancy-container form {
+  /* background-color: #0cb34931; */
+  /* position: absolute;
+  bottom: -100px; */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.solo-vacancy-section .vacancy-container form label,
+.vacancy-container form input {
+  font-size: 1.1rem;
+  color: black;
+}
+
+.solo-vacancy-section .vacancy-container form label {
+  margin: 10px 0;
+  font-weight: 600;
+}
+.solo-vacancy-section .vacancy-container form input {
+  padding: 5px;
+  width: 45%;
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: none;
+}
+
+.solo-vacancy-section .vacancy-container form textarea {
+  width: 60%;
+  resize: none;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: none;
+  font-size: 1.1rem;
+}
+
+.solo-vacancy-section .vacancy-container form #resume-input {
+  border: none;
+}
+
+.solo-vacancy-section .vacancy-container .send-apply-form {
+  margin-bottom: 5px;
+  width: 20%;
+  background-color: #0cb349;
+  font-size: 1.2rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 8px 16px;
+  transition: 0.3s ease;
+}
+.solo-vacancy-section .vacancy-container .send-apply-form:hpver {
+  background-color: #06e056;
+}
+
+.solo-vacancy-section .vacancy-container .cancel-btn {
+  margin-bottom: 5px;
+  width: 20%;
+  background-color: #ff00008e;
+  font-size: 1.2rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 8px 16px;
+  transition: 0.3s ease;
+}
 .solo-vacancy-section .vac-container .vac-secondary-info {
   /* background-color: azure; */
   border: 1px solid rgba(0, 0, 0, 0.5);
-  width: 30%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -786,4 +866,117 @@ footer .footer-container div a {
   font-size: 1.3rem;
   line-height: 40px;
   /* font-weight: 400; */
+}
+
+/* LOGINN */
+.login nav {
+  background-color: #0cb349;
+  width: 100%;
+  padding: 2rem 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* position: fixed; */
+  z-index: 10;
+}
+
+.login nav .logo {
+  font-size: 2rem;
+  font-family: "Expletus Sans", cursive;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 4px;
+}
+
+.login .reg-log-container {
+  /* background-color: aqua; */
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login .reg-log-container a {
+  font-size: 1.2rem;
+  /* font-weight: 600; */
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 5px 15px;
+  border-radius: 20px;
+  opacity: 0.8;
+  transition: 0.2s ease;
+}
+
+.login .reg-log-container a:hover {
+  opacity: 1;
+}
+
+.login .login-section {
+  /* background-color: #06e056; */
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login .login-section .login-container {
+  /* background-color: #c98989; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 300px;
+}
+
+.login .login-section .login-container h2 {
+font-size: 3rem;
+text-transform: uppercase;
+letter-spacing: 5px;
+margin: 20px 0;
+}
+.login .login-section .login-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.login .login-section .login-container form label{
+  font-size: 1.5rem;
+  margin: 10px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.login .login-section .login-container form input{
+  /* width: 100%; */
+  /* text-align: center; */
+  /* margin: 0 auto; */
+  outline: none;
+  border: 1px solid black;
+  font-size: 1.4rem;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+
+.login .login-section .login-container form input:focus{
+  outline: 1px solid #0cb349;
+  border-color: #0cb349;
+}
+.login .login-section .login-container form #pass-input {
+  /* border-right: none; */
+  width: 100%;
+}
+
+.div-input {
+  position: relative;
+}
+
+.login .login-section .login-container form .password-icon {
+  /* border: 1px solid black; */
+  margin-left: 10px;
+  z-index: 2;
+  font-size: 2rem;
+  position: absolute;
+  top: 3px;
+  /* background-color: #119ae9; */
 }

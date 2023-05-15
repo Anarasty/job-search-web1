@@ -3,6 +3,8 @@ import MainPage from "./screens/MainPage";
 import "./App.css";
 import VacanciesPage from "./screens/VacanciesPage";
 import SoloVacancyPage from "./screens/SoloVacancyPage";
+import LoginPage from "./screens/LoginPage";
+import RegisterPage from "./screens/RegisterPage";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/vacancies" element={<VacanciesPage />} />
           <Route path="/vacancies/:vacancy_id" element={<SoloVacancyPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </Router>
     </div>

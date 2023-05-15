@@ -12,7 +12,7 @@ const vacancies = [
         salary_from: 1,
         salary_to: 99,
         expected_work_experience: 3,
-        expected_english_level: "Anvanced",
+        expected_english_level: "Beginner",
         vacancy_company_type: "Outsorce",
     },
     {
@@ -28,7 +28,7 @@ const vacancies = [
         salary_from: 2500,
         salary_to: 3100,
         expected_work_experience: 4,
-        expected_english_level: "Anvanced",
+        expected_english_level: "Proficient",
         vacancy_company_type: "Outsorce",
     },
     {
@@ -44,7 +44,7 @@ const vacancies = [
         salary_from:900,
         salary_to: 1000,
         expected_work_experience: 2,
-        expected_english_level: "Anvanced",
+        expected_english_level: "Advanced",
         vacancy_company_type: "Outsorce",
     },
     {
@@ -60,7 +60,7 @@ const vacancies = [
         salary_from:900,
         salary_to: 1000,
         expected_work_experience: 6,
-        expected_english_level: "Anvanced",
+        expected_english_level: "Beginner",
         vacancy_company_type: "Outsorce",
     },
     {
@@ -76,7 +76,7 @@ const vacancies = [
         salary_from:900,
         salary_to: 1000,
         expected_work_experience: 3,
-        expected_english_level: "Anvanced",
+        expected_english_level: "Advanced",
         vacancy_company_type: "Outsorce",
     },
     {
@@ -92,7 +92,7 @@ const vacancies = [
         salary_from: 300,
         salary_to: 700,
         expected_work_experience: 1,
-        expected_english_level: "Anvanced",
+        expected_english_level: "Intermediate",
         vacancy_company_type: "Outsorce",
     },
     {
@@ -108,7 +108,7 @@ const vacancies = [
         salary_from: 2500,
         salary_to: 3100,
         expected_work_experience: 10,
-        expected_english_level: "Anvanced",
+        expected_english_level: "Beginner",
         vacancy_company_type: "Outsorce",
     },
     {
@@ -124,7 +124,7 @@ const vacancies = [
         salary_from: 300,
         salary_to: 700,
         expected_work_experience: 8,
-        expected_english_level: "Anvanced",
+        expected_english_level: "Intermediate",
         vacancy_company_type: "Outsorce",
     },
     {
@@ -140,7 +140,7 @@ const vacancies = [
         salary_from: 2500,
         salary_to: 3100,
         expected_work_experience: 5,
-        expected_english_level: "Anvanced",
+        expected_english_level: "Beginner",
         vacancy_company_type: "Outsorce",
     },
     {
@@ -156,7 +156,7 @@ const vacancies = [
         salary_from: 300,
         salary_to: 700,
         expected_work_experience: 1,
-        expected_english_level: "Anvanced",
+        expected_english_level: "Intermediate",
         vacancy_company_type: "Outsorce",
     },
     {
@@ -172,7 +172,7 @@ const vacancies = [
         salary_from: 2500,
         salary_to: 3100,
         expected_work_experience: 4,
-        expected_english_level: "Anvanced",
+        expected_english_level: "Intermediate",
         vacancy_company_type: "Outsorce",
     },
 ]
