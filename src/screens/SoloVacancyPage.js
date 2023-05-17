@@ -1,13 +1,24 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import vacancies from "../data.js";
+// import vacancies from "../data.js";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const SoloVacancyPage = () => {
   const { vacancy_id } = useParams();
-  const vacancy = vacancies.find(
-    (vacancy) => vacancy.vacancy_id === parseInt(vacancy_id)
-  );
+  const [vacancy, setVacancy] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/vacancy/get/${vacancy_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setVacancy(data);
+      })
+      .catch((error) => console.error(error));
+  }, [vacancy_id]);
+  // const vacancy = vacancies.find(
+  //   (vacancy) => vacancy.vacancyId === parseInt(vacancy_id)
+  // );
 
   const [isOpen, setIsOpen] = useState(false);
   const [showMoreId, setShowMoreId] = useState("");
@@ -51,6 +62,15 @@ const SoloVacancyPage = () => {
     setShowApplyForm(!showApplyForm);
   };
 
+  // FORMAT date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear().toString();
+    return `${day}.${month}.${year}`;
+  };
+
   return (
     <div className="solo-vacancy-section">
       <nav>
@@ -78,12 +98,12 @@ const SoloVacancyPage = () => {
       <div className="vac-container">
         <div className="vacancy-container">
           <div className="vac-main-info">
-            <h1>{vacancy.vacancy_name}</h1>
+            <h1>{vacancy?.vacancyName}</h1>
             <h2>
-              {vacancy.salary_from}$ - {vacancy.salary_to}$
+              {vacancy?.salaryFrom}$ - {vacancy?.salaryTo}$
             </h2>
-            <p className="creation-data">{vacancy.creation_data}</p>
-            <p className="description-p">{vacancy.vacancy_description}</p>
+            <p className="creation-data">{formatDate(vacancy?.creationDate)}</p>
+            <p className="description-p">{vacancy?.vacancyDescription}</p>
             <button className="apply-btn" onClick={toggleApplyForm}>
               Apply
             </button>
@@ -108,8 +128,13 @@ const SoloVacancyPage = () => {
                 ></textarea>
 
                 <label htmlFor="resume-input">
-                  Resume file: <input value={resumeFile}
-                  onChange={handleResumeChange} id="resume-input" type="file" />
+                  Resume file:{" "}
+                  <input
+                    value={resumeFile}
+                    onChange={handleResumeChange}
+                    id="resume-input"
+                    type="file"
+                  />
                 </label>
                 <input
                   type="submit"
@@ -123,13 +148,11 @@ const SoloVacancyPage = () => {
         <div className="vac-secondary-info">
           <h4>
             <i className="fa-solid fa-location-dot"></i>{" "}
-            {vacancy.vacancy_country}, {vacancy.vacancy_city}
+            {vacancy?.vacancyCountry}, {vacancy?.vacancyCity}
           </h4>
-          <h4>Form of employment: {vacancy.form_of_employment}</h4>
-          <h4>
-            Required experience: {vacancy.expected_work_experience} year(s)
-          </h4>
-          <h4>Required english level: {vacancy.expected_english_level}</h4>
+          <h4>Form of employment: {vacancy?.formOfEmployment}</h4>
+          <h4>Required experience: {vacancy?.expectedWorkExperience} year(s)</h4>
+          <h4>Required english level: {vacancy?.expectedEnglishLevel}</h4>
         </div>
       </div>
 

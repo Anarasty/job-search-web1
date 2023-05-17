@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import vacancies from "../data.js";
+// import vacancies from "../data.js";
 
 const VacanciesPage = () => {
+  const [vacancies, setVacancies] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/vacancy/all")
+      .then((response) => response.json())
+      .then((data) => setVacancies(data))
+      .catch((error) => console.error(error));
+  }, []);
+
+
   const [isOpen, setIsOpen] = useState(false);
   const [showMoreId, setShowMoreId] = useState("");
 
@@ -52,26 +62,26 @@ const VacanciesPage = () => {
   const filteredVacancies = vacancies.filter(
     (vacancy) =>
       // Фильтруем по минимальной зарплате
-      (minSalary === "" || vacancy.salary_from >= Number(minSalary)) &&
+      (minSalary === "" || vacancy.salaryFrom >= Number(minSalary)) &&
       // Фильтруем по максимальной зарплате
-      (maxSalary === "" || vacancy.salary_to <= Number(maxSalary)) &&
+      (maxSalary === "" || vacancy.salaryTo <= Number(maxSalary)) &&
       // Фильтруем по остальным параметрам, которые уже есть в коде
-      vacancy.vacancy_name.toLowerCase().includes(selectedName.toLowerCase()) &&
+      vacancy.vacancyName.toLowerCase().includes(selectedName.toLowerCase()) &&
       (selectedCategory === "" ||
-        vacancy.vacancy_category === selectedCategory) &&
+        vacancy.vacancyCategory === selectedCategory) &&
       (selectedCountry === "" ||
         (selectedCountry === "Others" &&
-          !["Ukraine", "Poland"].includes(vacancy.vacancy_country)) ||
+          !["Ukraine", "Poland"].includes(vacancy.vacancyCountry)) ||
         (selectedCountry !== "Others" &&
-          vacancy.vacancy_country === selectedCountry)) &&
+          vacancy.vacancyCountry === selectedCountry)) &&
       (selectedEmployment === "" ||
-        vacancy.form_of_employment === selectedEmployment) &&
+        vacancy.formOfEmployment === selectedEmployment) &&
       (selectedExperience === "" ||
         (selectedExperience === "5+" &&
-          vacancy.expected_work_experience >= 5) ||
-        vacancy.expected_work_experience === Number(selectedExperience)) &&
+          vacancy.expectedWorkExperience >= 5) ||
+        vacancy.expectedWorkExperience === Number(selectedExperience)) &&
       (selectedEnglish === "" ||
-        vacancy.expected_english_level === selectedEnglish)
+        vacancy.expectedEnglishLevel === selectedEnglish)
   );
 
   const totalPages = Math.ceil(filteredVacancies.length / itemsPerPage);
@@ -92,6 +102,15 @@ const VacanciesPage = () => {
     setMinSalary("");
     setMaxSalary("");
     setCurrentPage(1);
+  };
+
+  // FORMAT date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear().toString();
+    return `${day}.${month}.${year}`;
   };
 
   return (
@@ -126,30 +145,30 @@ const VacanciesPage = () => {
           <div className="vacancies-container">
             {paginatedVacancies.length > 0 ? (
               paginatedVacancies.map((vacancy) => (
-                <div key={vacancy.vacancy_id} className="vacancy-card">
+                <div key={vacancy.vacancyId} className="vacancy-card">
                   <div className="main-vac-info">
-                    <Link to={`/vacancies/${vacancy.vacancy_id}`}>
-                      {vacancy.vacancy_name}
+                    <Link to={`/vacancies/${vacancy.vacancyId}`}>
+                      {vacancy.vacancyName}
                     </Link>
                     <h2>
-                      {vacancy.salary_from}$ - {vacancy.salary_to}$
+                      {vacancy.salaryFrom}$ - {vacancy.salaryTo}$
                     </h2>
-                    <p>{vacancy.creation_data}</p>
+                    <p>{formatDate(vacancy.creationDate)}</p>
                   </div>
                   <p>
-                    {showMoreId === vacancy.vacancy_id
-                      ? vacancy.vacancy_description
-                      : vacancy.vacancy_description.slice(0, 254) + "..."}
+                    {showMoreId === vacancy.vacancyId
+                      ? vacancy.vacancyDescription
+                      : vacancy.vacancyDescription.slice(0, 254) + "..."}
                   </p>
-                  {vacancy.vacancy_description.length > 254 && (
+                  {vacancy.vacancyDescription.length > 254 && (
                     <a
                       href="#"
                       onClick={(e) => {
                         e.preventDefault();
-                        toggleShowMore(vacancy.vacancy_id);
+                        toggleShowMore(vacancy.vacancyId);
                       }}
                     >
-                      {showMoreId === vacancy.vacancy_id
+                      {showMoreId === vacancy.vacancyId
                         ? "Show less"
                         : "Show more"}
                     </a>
@@ -157,16 +176,16 @@ const VacanciesPage = () => {
                   <div className="vac-secondary-info">
                     <h4>
                       <i className="fa-solid fa-location-dot"></i>{" "}
-                      {vacancy.vacancy_country}, {vacancy.vacancy_city}
+                      {vacancy.vacancyCountry}, {vacancy.vacancyCity}
                     </h4>
                     <span>&#9830;</span>
-                    <h4>{vacancy.form_of_employment}</h4>
+                    <h4>{vacancy.formOfEmployment}</h4>
                     <span>&#9830;</span>
                     <h4>
-                      {vacancy.expected_work_experience} year(s) of experience
+                      {vacancy.expectedWorkExperience} year(s) of experience
                     </h4>
                     <span>&#9830;</span>
-                    <h4>English lvl: {vacancy.expected_english_level}</h4>
+                    <h4>English lvl: {vacancy.expectedEnglishLevel}</h4>
                   </div>
                   <div className="horizontal-line-med"></div>
                 </div>

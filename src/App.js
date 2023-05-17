@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/vacancies" element={<VacanciesPage />} />
           <Route path="/vacancies/:vacancy_id" element={<SoloVacancyPage />} />
+          {/* <Route path="/vacancy/get/:vacancy_id" element={<SoloVacancyPage />} /> */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
