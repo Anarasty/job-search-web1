@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import vacancies from "../data.js";
 
 const VacanciesPage = () => {
@@ -11,7 +11,6 @@ const VacanciesPage = () => {
       .then((data) => setVacancies(data))
       .catch((error) => console.error(error));
   }, []);
-
 
   const [isOpen, setIsOpen] = useState(false);
   const [showMoreId, setShowMoreId] = useState("");
@@ -77,8 +76,7 @@ const VacanciesPage = () => {
       (selectedEmployment === "" ||
         vacancy.formOfEmployment === selectedEmployment) &&
       (selectedExperience === "" ||
-        (selectedExperience === "5+" &&
-          vacancy.expectedWorkExperience >= 5) ||
+        (selectedExperience === "5+" && vacancy.expectedWorkExperience >= 5) ||
         vacancy.expectedWorkExperience === Number(selectedExperience)) &&
       (selectedEnglish === "" ||
         vacancy.expectedEnglishLevel === selectedEnglish)
@@ -113,6 +111,33 @@ const VacanciesPage = () => {
     return `${day}.${month}.${year}`;
   };
 
+  //! USER
+  const [userName, setUserName] = useState(""); // Состояние для хранения имени и фамилии пользователя
+  // Запрос на получение данных пользователя
+  const token = localStorage.getItem("token");
+  fetch(
+    `http://localhost:8080/user-data/admin/api/get-user-by-token?token=${token}`,
+    {
+      method: "GET",
+      headers: {
+        accept: "*/*",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      // Получение имени и фамилии пользователя из данных
+      const firstName = data.firstName;
+      const lastName = data.lastName;
+
+      // Установка имени и фамилии в состояние
+      setUserName(`${firstName} ${lastName}`);
+    })
+    .catch((error) => {
+      // Обработка ошибки
+      console.error("Error:", error);
+    });
+
   return (
     <div className="vacancies-section-page">
       <nav>
@@ -121,10 +146,10 @@ const VacanciesPage = () => {
             Galera
           </Link>
           <Link to="/vacancies">Vacancies</Link>
-          <Link to="/salaries">Salaries</Link>
+          <Link to="/saved">Saved</Link>
         </div>
         <div className="dropdown-menu">
-          <button onClick={toggleDropdown}>User</button>
+          <button onClick={toggleDropdown}>{userName}</button>
           {isOpen && (
             <ul>
               <li>
@@ -153,7 +178,7 @@ const VacanciesPage = () => {
                     <h2>
                       {vacancy.salaryFrom}$ - {vacancy.salaryTo}$
                     </h2>
-                    <p>{formatDate(vacancy.creationDate)}</p>
+                    <p> {formatDate(vacancy.creationDate)}</p>
                   </div>
                   <p>
                     {showMoreId === vacancy.vacancyId

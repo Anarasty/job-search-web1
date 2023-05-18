@@ -44,8 +44,6 @@ const RegisterPage = () => {
               type="email"
               autoComplete="off"
             ></input>
-            {/* <label htmlFor="pass-input">Password:</label> */}
-            {/* <input id="pass-input" type="password"></input> */}
             <label htmlFor="pass-input">Password</label>
             <div className="div-input">
               <input

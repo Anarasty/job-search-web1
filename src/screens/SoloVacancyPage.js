@@ -71,6 +71,66 @@ const SoloVacancyPage = () => {
     return `${day}.${month}.${year}`;
   };
 
+//!@!!! TETS2
+const [isSaved, setIsSaved] = useState(false);
+useEffect(() => {
+  fetch(`http://localhost:8080/vacancy/get/${vacancy_id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      setVacancy(data);
+
+      // Проверка, сохранена ли вакансия
+      fetch(`http://localhost:8080/saved-vacancy/get-saved-vacancies?token=0184129e-12a0-47fb-93ea-c3c27256cbaa`)
+        .then((response) => response.json())
+        .then((savedVacancies) => {
+          const isVacancySaved = savedVacancies.some((savedVacancy) => savedVacancy.vacancy.vacancyId === data.vacancyId);
+          setIsSaved(isVacancySaved);
+        })
+        .catch((error) => console.error(error));
+    })
+    .catch((error) => console.error(error));
+}, [vacancy_id]);
+
+const handleSaveVacancy = () => {
+  const apiUrl = "http://localhost:8080/saved-vacancy/add-vacancy?token=0184129e-12a0-47fb-93ea-c3c27256cbaa&vacancyId=";
+  const requestUrl = apiUrl + vacancy.vacancyId;
+
+  fetch(requestUrl, { method: "POST" })
+    .then((response) => {
+      if (response.ok) {
+        setIsSaved(true); // Обновление сохраненного статуса
+      }
+    })
+    .catch((error) => console.error(error));
+};
+
+  //! USER
+  const [userName, setUserName] = useState(""); // Состояние для хранения имени и фамилии пользователя
+  // Запрос на получение данных пользователя
+  const token = localStorage.getItem("token");
+  fetch(
+    `http://localhost:8080/user-data/admin/api/get-user-by-token?token=${token}`,
+    {
+      method: "GET",
+      headers: {
+        accept: "*/*",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      // Получение имени и фамилии пользователя из данных
+      const firstName = data.firstName;
+      const lastName = data.lastName;
+
+      // Установка имени и фамилии в состояние
+      setUserName(`${firstName} ${lastName}`);
+    })
+    .catch((error) => {
+      // Обработка ошибки
+      console.error("Error:", error);
+    });
+
   return (
     <div className="solo-vacancy-section">
       <nav>
@@ -79,10 +139,10 @@ const SoloVacancyPage = () => {
             Galera
           </Link>
           <Link to="/vacancies">Vacancies</Link>
-          <Link to="/salaries">Salaries</Link>
+          <Link to="/saved">Saved</Link>
         </div>
         <div className="dropdown-menu">
-          <button onClick={toggleDropdown}>User</button>
+        <button onClick={toggleDropdown}>{userName}</button>
           {isOpen && (
             <ul>
               <li>
@@ -98,6 +158,21 @@ const SoloVacancyPage = () => {
       <div className="vac-container">
         <div className="vacancy-container">
           <div className="vac-main-info">
+            {/* <span className="saved-vac"><i className="fa-regular fa-star"></i></span> */}
+            {/* <span className="saved-vac" onClick={handleSaveVacancy}>
+            {isSaved ? (
+                  <i className="fa-solid fa-star"></i>
+                ) : (
+                  <i className="fa-regular fa-star"></i>
+                )}
+        </span> */}
+<span className="saved-vac" onClick={handleSaveVacancy}>
+  {isSaved ? (
+    <i className="fa-solid fa-star"></i>
+  ) : (
+    <i className="fa-regular fa-star"></i>
+  )}
+</span>
             <h1>{vacancy?.vacancyName}</h1>
             <h2>
               {vacancy?.salaryFrom}$ - {vacancy?.salaryTo}$

@@ -510,6 +510,17 @@ footer .footer-container div a {
   flex-direction: column;
   /* background-color: #000000; */
 }
+/* .vac-main-info
+  .saved-vac {
+  position: absolute;
+  right: 0;
+  background-color: #dbdbdb;
+}
+
+.vac-main-info
+  .saved-vac:hover {
+  cursor: pointer;
+} */
 
 .main-vacancies-container .vacancies-container .vacancy-card .main-vac-info h3 {
   color: #119ae9;
@@ -736,6 +747,19 @@ footer .footer-container div a {
   display: flex;
   flex-direction: column;
   /* background-color: #0c76b3; */
+  position: relative;
+}
+
+.solo-vacancy-section .vacancy-container .vac-main-info .saved-vac {
+  position: absolute;
+  left: -50px;
+  top: 27px;
+  /* background-color: #dbdbdb; */
+  font-size: 1.5rem;
+}
+
+.solo-vacancy-section .vacancy-container .vac-main-info .saved-vac:hover {
+  cursor: pointer;
 }
 
 .solo-vacancy-section .vacancy-container .vac-main-info h1 {
@@ -929,24 +953,24 @@ footer .footer-container div a {
 }
 
 .login .login-section .login-container h2 {
-font-size: 3rem;
-text-transform: uppercase;
-letter-spacing: 5px;
-margin: 20px 0;
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 20px 0;
 }
 .login .login-section .login-container form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.login .login-section .login-container form label{
+.login .login-section .login-container form label {
   font-size: 1.5rem;
   margin: 10px 0;
   text-align: center;
   font-weight: 600;
 }
 
-.login .login-section .login-container form input{
+.login .login-section .login-container form input {
   /* width: 100%; */
   /* text-align: center; */
   /* margin: 0 auto; */
@@ -957,8 +981,7 @@ margin: 20px 0;
   border-radius: 10px;
 }
 
-
-.login .login-section .login-container form input:focus{
+.login .login-section .login-container form input:focus {
   outline: 1px solid #0cb349;
   border-color: #0cb349;
 }
@@ -979,4 +1002,8 @@ margin: 20px 0;
   position: absolute;
   top: 3px;
   /* background-color: #119ae9; */
+}
+
+.saved-vacancy {
+  border: 1px solid black;
 }

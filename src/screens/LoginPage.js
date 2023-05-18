@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const LoginPage = () => {
@@ -8,6 +8,48 @@ const LoginPage = () => {
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
+
+  //!LOGIN
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:8080/user-data/sign-in", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Аутентификация прошла успешно, сохранение токена в localStorage
+        const token = data.token;
+        localStorage.setItem("token", token);
+
+        // Перенаправление на главную страницу
+        navigate("/vacancies");
+      } else {
+        // Обработка ошибки от сервера
+        setError(data.responseMessage);
+      }
+    } catch (error) {
+      // Обработка ошибки сети
+      setError("An error occurred. Please try again later.");
+    }
+  };
+
   return (
     <div className="login">
       <nav>
@@ -22,22 +64,24 @@ const LoginPage = () => {
       <section className="login-section">
         <div className="login-container">
           <h2>Login</h2>
-          <form>
+          <form onSubmit={handleFormSubmit}>
             <label htmlFor="email-input">Email</label>
             <input
               id="email-input"
               placeholder="example@gmail.com"
               type="email"
               autoComplete="off"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             ></input>
-            {/* <label htmlFor="pass-input">Password:</label> */}
-            {/* <input id="pass-input" type="password"></input> */}
             <label htmlFor="pass-input">Password</label>
             <div className="div-input">
               <input
                 type={passwordVisible ? "text" : "password"}
                 name="password"
                 id="pass-input"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <i className="password-icon" onClick={togglePasswordVisibility}>
                 {passwordVisible ? (
@@ -47,6 +91,8 @@ const LoginPage = () => {
                 )}
               </i>
             </div>
+            {error && <div className="error-message">{error}</div>}
+            <input type="submit" value="submit"></input>
           </form>
         </div>
       </section>
