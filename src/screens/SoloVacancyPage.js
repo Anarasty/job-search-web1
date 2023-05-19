@@ -1,8 +1,9 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 // import vacancies from "../data.js";
 import { useState } from "react";
 import { useEffect } from "react";
+import axios from "axios";
 
 const SoloVacancyPage = () => {
   const { vacancy_id } = useParams();
@@ -31,13 +32,16 @@ const SoloVacancyPage = () => {
   };
 
   const [showApplyForm, setShowApplyForm] = useState(false);
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [resumeFile, setResumeFile] = useState("");
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+  const token = localStorage.getItem("token");
+  //?test apply
+
+  // const handleEmailChange = (event) => {
+  //   setEmail(event.target.value);
+  // };
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
@@ -49,13 +53,12 @@ const SoloVacancyPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Email: ${email}`);
+    // console.log(`Email: ${email}`);
     console.log(`Message: ${message}`);
     console.log(`ResumeFile: ${resumeFile}`);
-    setEmail("");
-    setMessage("");
-    setResumeFile("");
-    setShowApplyForm(false);
+    // setEmail("");
+    setMessage("")
+    setResumeFile("")
   };
 
   const toggleApplyForm = () => {
@@ -71,43 +74,49 @@ const SoloVacancyPage = () => {
     return `${day}.${month}.${year}`;
   };
 
-//!@!!! TETS2
-const [isSaved, setIsSaved] = useState(false);
-useEffect(() => {
-  fetch(`http://localhost:8080/vacancy/get/${vacancy_id}`)
-    .then((response) => response.json())
-    .then((data) => {
-      setVacancy(data);
+  //!@!!! TETS2
+  // const token = localStorage.getItem("token");
 
-      // Проверка, сохранена ли вакансия
-      fetch(`http://localhost:8080/saved-vacancy/get-saved-vacancies?token=0184129e-12a0-47fb-93ea-c3c27256cbaa`)
-        .then((response) => response.json())
-        .then((savedVacancies) => {
-          const isVacancySaved = savedVacancies.some((savedVacancy) => savedVacancy.vacancy.vacancyId === data.vacancyId);
-          setIsSaved(isVacancySaved);
-        })
-        .catch((error) => console.error(error));
-    })
-    .catch((error) => console.error(error));
-}, [vacancy_id]);
+  const [isSaved, setIsSaved] = useState(false);
+  useEffect(() => {
+    fetch(`http://localhost:8080/vacancy/get/${vacancy_id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setVacancy(data);
 
-const handleSaveVacancy = () => {
-  const apiUrl = "http://localhost:8080/saved-vacancy/add-vacancy?token=0184129e-12a0-47fb-93ea-c3c27256cbaa&vacancyId=";
-  const requestUrl = apiUrl + vacancy.vacancyId;
+        // Проверка, сохранена ли вакансия
+        fetch(
+          `http://localhost:8080/saved-vacancy/get-saved-vacancies?token=${token}`
+        )
+          .then((response) => response.json())
+          .then((savedVacancies) => {
+            const isVacancySaved = savedVacancies.some(
+              (savedVacancy) =>
+                savedVacancy.vacancy.vacancyId === data.vacancyId
+            );
+            setIsSaved(isVacancySaved);
+          })
+          .catch((error) => console.error(error));
+      })
+      .catch((error) => console.error(error));
+  }, [vacancy_id]);
 
-  fetch(requestUrl, { method: "POST" })
-    .then((response) => {
-      if (response.ok) {
-        setIsSaved(true); // Обновление сохраненного статуса
-      }
-    })
-    .catch((error) => console.error(error));
-};
+  const handleSaveVacancy = () => {
+    const apiUrl = `http://localhost:8080/saved-vacancy/add-vacancy?token=${token}&vacancyId=`;
+    const requestUrl = apiUrl + vacancy.vacancyId;
+
+    fetch(requestUrl, { method: "POST" })
+      .then((response) => {
+        if (response.ok) {
+          setIsSaved(true); // Обновление сохраненного статуса
+        }
+      })
+      .catch((error) => console.error(error));
+  };
 
   //! USER
-  const [userName, setUserName] = useState(""); // Состояние для хранения имени и фамилии пользователя
-  // Запрос на получение данных пользователя
-  const token = localStorage.getItem("token");
+  const [userName, setUserName] = useState(""); 
+  // const token = localStorage.getItem("token");
   fetch(
     `http://localhost:8080/user-data/admin/api/get-user-by-token?token=${token}`,
     {
@@ -131,25 +140,38 @@ const handleSaveVacancy = () => {
       console.error("Error:", error);
     });
 
+  //? LOGOUT
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    // Remove user token from local storage
+    localStorage.removeItem("token");
+
+    // Navigate to the login page
+    navigate("/login");
+  };
+
   return (
     <div className="solo-vacancy-section">
       <nav>
         <div className="main-links">
           <Link className="logo" to="/">
-            Galera
+            ITJF
           </Link>
           <Link to="/vacancies">Vacancies</Link>
           <Link to="/saved">Saved</Link>
+          <Link to="/feedbacks">Feedbacks</Link>
         </div>
         <div className="dropdown-menu">
-        <button onClick={toggleDropdown}>{userName}</button>
+          <button className="user-name-btn" onClick={toggleDropdown}>
+            {userName}
+          </button>
           {isOpen && (
             <ul>
-              <li>
+              {/* <li>
                 <Link href="#">Profile</Link>
-              </li>
+              </li> */}
               <li>
-                <Link href="#">Log out</Link>
+                <button onClick={handleLogout}>Log out</button>
               </li>
             </ul>
           )}
@@ -158,21 +180,13 @@ const handleSaveVacancy = () => {
       <div className="vac-container">
         <div className="vacancy-container">
           <div className="vac-main-info">
-            {/* <span className="saved-vac"><i className="fa-regular fa-star"></i></span> */}
-            {/* <span className="saved-vac" onClick={handleSaveVacancy}>
-            {isSaved ? (
-                  <i className="fa-solid fa-star"></i>
-                ) : (
-                  <i className="fa-regular fa-star"></i>
-                )}
-        </span> */}
-<span className="saved-vac" onClick={handleSaveVacancy}>
-  {isSaved ? (
-    <i className="fa-solid fa-star"></i>
-  ) : (
-    <i className="fa-regular fa-star"></i>
-  )}
-</span>
+            <span className="saved-vac" onClick={handleSaveVacancy}>
+              {isSaved ? (
+                <i className="fa-solid fa-star"></i>
+              ) : (
+                <i className="fa-regular fa-star"></i>
+              )}
+            </span>
             <h1>{vacancy?.vacancyName}</h1>
             <h2>
               {vacancy?.salaryFrom}$ - {vacancy?.salaryTo}$
@@ -184,14 +198,6 @@ const handleSaveVacancy = () => {
             </button>
             {showApplyForm && (
               <form onSubmit={handleSubmit}>
-                <label htmlFor="email-input">Email: </label>
-                <input
-                  autoComplete="off"
-                  id="email-input"
-                  type="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                />
                 <label htmlFor="message-input">
                   Write about yourself and why you applied for this position:{" "}
                 </label>
@@ -206,9 +212,11 @@ const handleSaveVacancy = () => {
                   Resume file:{" "}
                   <input
                     value={resumeFile}
+                    // onChange={handleResumeChange}
                     onChange={handleResumeChange}
                     id="resume-input"
                     type="file"
+                    name="file"
                   />
                 </label>
                 <input
@@ -226,7 +234,9 @@ const handleSaveVacancy = () => {
             {vacancy?.vacancyCountry}, {vacancy?.vacancyCity}
           </h4>
           <h4>Form of employment: {vacancy?.formOfEmployment}</h4>
-          <h4>Required experience: {vacancy?.expectedWorkExperience} year(s)</h4>
+          <h4>
+            Required experience: {vacancy?.expectedWorkExperience} year(s)
+          </h4>
           <h4>Required english level: {vacancy?.expectedEnglishLevel}</h4>
         </div>
       </div>
@@ -262,7 +272,7 @@ const handleSaveVacancy = () => {
         </div>
 
         <div>
-          <p>&copy; 2023 Galera. All rights reserved.</p>
+          <p>&copy; 2023 IT Job Finder. All rights reserved.</p>
         </div>
       </footer>
     </div>

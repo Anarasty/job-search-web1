@@ -428,7 +428,7 @@ footer .footer-container div a {
   text-shadow: 0px 0px 15px rgba(0, 0, 0, 0);
 }
 
-.vacancies-section-page .dropdown-menu button {
+.vacancies-section-page .dropdown-menu .user-name-btn {
   font-size: 1.3rem;
   padding: 5px 10px;
   background-color: transparent;
@@ -438,7 +438,7 @@ footer .footer-container div a {
   transition: 0.2s ease;
 }
 
-.vacancies-section-page .dropdown-menu button:hover {
+.vacancies-section-page .dropdown-menu .user-name-btn:hover {
   background-color: #fff;
   color: #0cb349;
 }
@@ -450,19 +450,24 @@ footer .footer-container div a {
   margin-top: 2px;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 5px;
-  margin-left: -12px;
+  margin-left: 0px;
+  
 }
 .vacancies-section-page .dropdown-menu ul li {
   padding: 10px;
   text-align: center;
 }
-.vacancies-section-page .dropdown-menu ul li a {
+.vacancies-section-page .dropdown-menu ul li a, .vacancies-section-page .dropdown-menu ul li button  {
   font-size: 1.2rem;
   /* margin: 20px 0; */
   color: #000;
   /* padding: 10px; */
+  border: none;
+  background-color: transparent;
 }
-.vacancies-section-page .dropdown-menu ul li a:hover {
+
+
+.vacancies-section-page .dropdown-menu ul li a:hover, .vacancies-section-page .dropdown-menu ul li button:hover {
   text-shadow: 0px 0px 5px black;
 }
 /* MAINA VAC SECTION */
@@ -659,6 +664,10 @@ footer .footer-container div a {
   /* background-color: #0c76b3; */
   margin: 20px 0;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* SOLO VAC SECTION */
@@ -694,7 +703,7 @@ footer .footer-container div a {
   text-shadow: 0px 0px 15px rgba(0, 0, 0, 0);
 }
 
-.solo-vacancy-section .dropdown-menu button {
+.solo-vacancy-section .dropdown-menu .user-name-btn {
   font-size: 1.3rem;
   padding: 5px 10px;
   background-color: transparent;
@@ -704,7 +713,7 @@ footer .footer-container div a {
   transition: 0.2s ease;
 }
 
-.solo-vacancy-section .dropdown-menu button:hover {
+.solo-vacancy-section .dropdown-menu .user-name-btn:hover {
   background-color: #fff;
   color: #0cb349;
 }
@@ -722,13 +731,15 @@ footer .footer-container div a {
   padding: 10px;
   text-align: center;
 }
-.solo-vacancy-section .dropdown-menu ul li a {
+.solo-vacancy-section .dropdown-menu ul li a,.solo-vacancy-section .dropdown-menu ul li button {
   font-size: 1.2rem;
   /* margin: 20px 0; */
   color: #000;
   /* padding: 10px; */
+  background-color: transparent;
+  border: none;
 }
-.solo-vacancy-section .dropdown-menu ul li a:hover {
+.solo-vacancy-section .dropdown-menu ul li a:hover, .solo-vacancy-section .dropdown-menu ul li button:hover {
   text-shadow: 0px 0px 5px black;
 }
 /* MAIN Vacancy SECTION */
@@ -884,7 +895,7 @@ footer .footer-container div a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
   margin: 0 60px;
   border-radius: 10px;
   font-size: 1.3rem;
@@ -1004,6 +1015,131 @@ footer .footer-container div a {
   /* background-color: #119ae9; */
 }
 
-.saved-vacancy {
-  border: 1px solid black;
+.login .login-section .login-container form .form-submit-login {
+  margin: 20px auto;
+  font-size: 1.2rem;
+  background-color: #0cb349;
+}
+.login .login-section .login-container form .form-submit-login:hover {
+  background-color: #06e056;
+}
+
+.login .login-section .login-container .error-message {
+color: red;
+}
+
+/*? SAVED VACANCIES */
+.saved-vacancies-section {
+
+}
+
+.saved-vacancies-section nav {
+  background-color: #0cb349;
+  width: 100%;
+  padding: 2rem 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.saved-vacancies-section nav .main-links a {
+  margin-right: 20px;
+  color: #fff;
+  font-size: 1.4rem;
+  border-bottom: 2px solid white;
+  transition: 0.2s ease;
+}
+
+.saved-vacancies-section nav .main-links a:hover {
+  text-shadow: 0px 0px 15px rgb(255, 255, 255);
+}
+
+.saved-vacancies-section nav .main-links .logo {
+  font-family: "Expletus Sans", cursive;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  border: transparent;
+}
+
+.saved-vacancies-section nav .main-links .logo:hover {
+  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0);
+}
+
+.saved-vacancies-section .dropdown-menu .user-name-btn {
+  font-size: 1.3rem;
+  padding: 5px 10px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 5px;
+  transition: 0.2s ease;
+}
+
+.saved-vacancies-section .dropdown-menu .user-name-btn:hover {
+  background-color: #fff;
+  color: #0cb349;
+}
+
+.saved-vacancies-section .dropdown-menu ul {
+  background-color: #f8f8f8;
+  position: absolute;
+  z-index: 2;
+  margin-top: 2px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  margin-left: -12px;
+}
+.saved-vacancies-section .dropdown-menu ul li {
+  padding: 10px;
+  text-align: center;
+}
+.saved-vacancies-section .dropdown-menu ul li a, .saved-vacancies-section .dropdown-menu ul li button {
+  font-size: 1.2rem;
+  /* margin: 20px 0; */
+  color: #000;
+  /* padding: 10px; */
+  background-color: transparent;
+  border: none;
+}
+.saved-vacancies-section .dropdown-menu ul li a:hover, .saved-vacancies-section .dropdown-menu ul li button:hover {
+  text-shadow: 0px 0px 5px black;
+}
+
+/* !SAVED MAIN */
+.saved-vacancies-section .main-saved-sections {
+  /* background-color: #0c76b3; */
+  min-height: 70vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 8rem;
+}
+
+.saved-vacancies-section .main-saved-sections h2 {
+  font-size: 2rem;
+  /* margin: 0 0 30px; */
+  color: black;
+}
+
+.saved-vacancies-section .main-saved-sections  .saved-vacancy {
+  background-color: #0cb349;
+  padding: 1rem 2rem;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.saved-vacancies-section .main-saved-sections  .saved-vacancy a {
+  color: white;
+}
+
+.saved-vacancies-section .main-saved-sections  .saved-vacancy i{
+  transition: .3s ease;
+}
+.saved-vacancies-section .main-saved-sections  .saved-vacancy i:hover {
+  text-shadow: 0 0 20px red;
 }

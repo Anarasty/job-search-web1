@@ -6,6 +6,7 @@ import SoloVacancyPage from "./screens/SoloVacancyPage";
 import LoginPage from "./screens/LoginPage";
 import RegisterPage from "./screens/RegisterPage";
 import SavedVacnciesPage from "./screens/SavedVacnciesPage";
+import ApplyPage from "./screens/ApplyPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/saved" element={<SavedVacnciesPage />} />
+          <Route path="/feedbacks" element={<ApplyPage />} />
         </Routes>
       </Router>
     </div>

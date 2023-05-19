@@ -138,25 +138,36 @@ const VacanciesPage = () => {
       console.error("Error:", error);
     });
 
+//? LOGOUT
+const navigate = useNavigate();
+const handleLogout = () => {
+  // Remove user token from local storage
+  localStorage.removeItem("token");
+
+  // Navigate to the login page
+  navigate("/login");
+};
+
   return (
     <div className="vacancies-section-page">
       <nav>
         <div className="main-links">
           <Link className="logo" to="/">
-            Galera
+            ITJF
           </Link>
           <Link to="/vacancies">Vacancies</Link>
           <Link to="/saved">Saved</Link>
         </div>
         <div className="dropdown-menu">
-          <button onClick={toggleDropdown}>{userName}</button>
+          <button className="user-name-btn" onClick={toggleDropdown}>{userName}</button>
           {isOpen && (
             <ul>
-              <li>
+              {/* <li>
                 <Link href="#">Profile</Link>
-              </li>
+              </li> */}
               <li>
-                <Link href="#">Log out</Link>
+                {/* <Link href="#">Log out</Link> */}
+                <button onClick={handleLogout}>Log out</button>
               </li>
             </ul>
           )}
@@ -164,7 +175,7 @@ const VacanciesPage = () => {
       </nav>
 
       <section className="main-vacancies">
-        <h1 className="title">Vacancies on Galera</h1>
+        <h1 className="title">Vacancies on IT Job Finder</h1>
         <div className="horizontal-line-med"></div>
         <div className="main-vacancies-container">
           <div className="vacancies-container">
@@ -216,7 +227,10 @@ const VacanciesPage = () => {
                 </div>
               ))
             ) : (
-              <div className="not-found-vac">No results found!</div>
+              <div className="not-found-vac">
+                <img src="https://imgtr.ee/images/2023/05/19/2mLqI.png" alt="No results found!"></img>
+                <p>Sorry!  No results found :(</p>
+              </div>
             )}
             <div className="pagination">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map(
@@ -365,7 +379,7 @@ const VacanciesPage = () => {
         </div>
 
         <div>
-          <p>&copy; 2023 Galera. All rights reserved.</p>
+          <p>&copy; 2023 IT Job Finder. All rights reserved.</p>
         </div>
       </footer>
     </div>

@@ -46,15 +46,15 @@ const LoginPage = () => {
       }
     } catch (error) {
       // Обработка ошибки сети
-      setError("An error occurred. Please try again later.");
+      setError("Wrong input! Check email or password!");
     }
   };
 
   return (
     <div className="login">
       <nav>
-        <Link className="logo" to="/">
-          Galera
+        <Link className="logo" to="">
+          ITJF
         </Link>
         <div className="reg-log-container">
           <Link to="/login">Log In</Link>
@@ -92,7 +92,7 @@ const LoginPage = () => {
               </i>
             </div>
             {error && <div className="error-message">{error}</div>}
-            <input type="submit" value="submit"></input>
+            <input className="form-submit-login" type="submit" value="Login"></input>
           </form>
         </div>
       </section>

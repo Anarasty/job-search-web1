@@ -30,7 +30,7 @@ const MainPage = () => {
     <div className="main-page-section">
       <nav>
         <Link className="logo" to="/">
-          Galera
+          ITJF
         </Link>
         <div className="reg-log-container">
           <Link to="/login">Log In</Link>
@@ -39,7 +39,7 @@ const MainPage = () => {
       </nav>
       <header>
         <img src="https://imgtr.ee/images/2023/05/05/aZ83R.png" alt="logo" />
-        <h1>IT job searching website #1 in Ukraine</h1>
+        <h1>IT Job Finder #1 job searching website in Ukraine</h1>
         <h3 className="typing-txt">
           <span className="type">
             <span> We will find the right job for you!</span>
@@ -182,7 +182,7 @@ const MainPage = () => {
       </section>
       <section className="subscribe-section">
         <h2>
-          Purchase <span>Galera</span> +
+          Purchase <span>ITJF</span> +
         </h2>
         <div>
           <h3>By paying 4.99$ monthly u get:</h3>
@@ -234,7 +234,7 @@ const MainPage = () => {
         </div>
 
         <div>
-          <p>&copy; 2023 Galera. All rights reserved.</p>
+          <p>&copy; 2023 IT Job Finder. All rights reserved.</p>
         </div>
       </footer>
     </div>
