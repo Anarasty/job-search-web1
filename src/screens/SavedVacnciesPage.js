@@ -95,6 +95,7 @@ const SavedVacanciesPage = () => {
           </Link>
           <Link to="/vacancies">Vacancies</Link>
           <Link to="/saved">Saved</Link>
+          <Link to="/feedbacks">Feedbacks</Link>
         </div>
         <div className="dropdown-menu">
           <button className="user-name-btn" onClick={toggleDropdown}>

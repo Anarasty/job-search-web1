@@ -33,34 +33,73 @@ const SoloVacancyPage = () => {
 
   const [showApplyForm, setShowApplyForm] = useState(false);
   // const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [resumeFile, setResumeFile] = useState("");
+  // const [message, setMessage] = useState("");
+  // const [resumeFile, setResumeFile] = useState("");
 
   const token = localStorage.getItem("token");
-  //?test apply
+
+
+
+
+  //?!!test apply
 
   // const handleEmailChange = (event) => {
   //   setEmail(event.target.value);
   // };
+  const [message, setMessage] = useState("");
+  const [resumeFile, setResumeFile] = useState(null);
+
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
   };
-
+  
   const handleResumeChange = (event) => {
-    setResumeFile(event.target.value);
+    setResumeFile(event.target.files[0]);
   };
+  // const handleMessageChange = (event) => {
+  //   setMessage(event.target.value);
+  // };
 
+  // const handleResumeChange = (event) => {
+  //   setResumeFile(event.target.value);
+  // };
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   // console.log(`Email: ${email}`);
+  //   console.log(`Message: ${message}`);
+  //   console.log(`ResumeFile: ${resumeFile}`);
+  //   // setEmail("");
+  //   setMessage("")
+  //   setResumeFile("")
+  // };
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(`Email: ${email}`);
-    console.log(`Message: ${message}`);
-    console.log(`ResumeFile: ${resumeFile}`);
-    // setEmail("");
-    setMessage("")
-    setResumeFile("")
+  
+    const formData = new FormData();
+    formData.append("feedbackDescription", message);
+    formData.append("token", token);
+    formData.append("vacancyId", vacancy_id);
+    formData.append("userFile", resumeFile);
+  
+    axios
+      .post("http://localhost:8080/vacancy-feedback/add-vacancy-feedback", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        // Обработка успешного ответа от сервера
+        console.log(response.data);
+      })
+      .catch((error) => {
+        // Обработка ошибок
+        console.error(error);
+      });
   };
 
+  //??!
   const toggleApplyForm = () => {
     setShowApplyForm(!showApplyForm);
   };
@@ -204,14 +243,14 @@ const SoloVacancyPage = () => {
                 <textarea
                   rows="3"
                   id="message-input"
-                  value={message}
+                  // value={message}
                   onChange={handleMessageChange}
                 ></textarea>
 
                 <label htmlFor="resume-input">
                   Resume file:{" "}
                   <input
-                    value={resumeFile}
+                    // value={resumeFile}
                     // onChange={handleResumeChange}
                     onChange={handleResumeChange}
                     id="resume-input"

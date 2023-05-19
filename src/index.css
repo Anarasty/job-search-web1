@@ -1143,3 +1143,103 @@ color: red;
 .saved-vacancies-section .main-saved-sections  .saved-vacancy i:hover {
   text-shadow: 0 0 20px red;
 }
+
+/* /sad/sdioklbg */
+.feedback-section-page {
+  width: 100%;
+  background-color: #fff;
+}
+
+.feedback-section-page nav {
+  background-color: #0cb349;
+  width: 100%;
+  padding: 2rem 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.feedback-section-page nav .main-links {
+  /* background-color: #fff; */
+}
+.feedback-section-page nav .main-links a {
+  margin-right: 20px;
+  color: #fff;
+  font-size: 1.4rem;
+  border-bottom: 2px solid white;
+  transition: 0.2s ease;
+}
+
+.feedback-section-page nav .main-links a:hover {
+  text-shadow: 0px 0px 15px rgb(255, 255, 255);
+}
+
+.feedback-section-page nav .main-links .logo {
+  font-family: "Expletus Sans", cursive;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  border: transparent;
+}
+
+.feedback-section-page nav .main-links .logo:hover {
+  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0);
+}
+
+.feedback-section-page .dropdown-menu .user-name-btn {
+  font-size: 1.3rem;
+  padding: 5px 10px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 5px;
+  transition: 0.2s ease;
+}
+
+.feedback-section-page .dropdown-menu .user-name-btn:hover {
+  background-color: #fff;
+  color: #0cb349;
+}
+
+.feedback-section-page .dropdown-menu ul {
+  background-color: #f8f8f8;
+  position: absolute;
+  z-index: 2;
+  margin-top: 2px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  margin-left: 0px;
+  
+}
+.feedback-section-page .dropdown-menu ul li {
+  padding: 10px;
+  text-align: center;
+}
+.feedback-section-page .dropdown-menu ul li a, .feedback-section-page .dropdown-menu ul li button  {
+  font-size: 1.2rem;
+  /* margin: 20px 0; */
+  color: #000;
+  /* padding: 10px; */
+  border: none;
+  background-color: transparent;
+}
+
+
+.feedback-section-page .dropdown-menu ul li a:hover, .feedback-section-page .dropdown-menu ul li button:hover {
+  text-shadow: 0px 0px 5px black;
+}
+
+/* .sa'd,easiof */
+.main-feedbacks {
+  padding: 4rem 8rem;
+  width: 100%;
+  min-height: 80vh;
+}
+
+
+.main-feedbacks .feed-container {
+  border: 1px solid black;
+  margin: 20px 0;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+}
